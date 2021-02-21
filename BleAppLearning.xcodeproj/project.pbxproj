@@ -18,6 +18,11 @@
 		ABACDECE25E16D1D003F5B0B /* DeviceTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABACDECC25E16D1D003F5B0B /* DeviceTableViewCell.swift */; };
 		ABACDECF25E16D1D003F5B0B /* DeviceTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = ABACDECD25E16D1D003F5B0B /* DeviceTableViewCell.xib */; };
 		ABACDEE625E16F2B003F5B0B /* UITableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABACDEE525E16F2B003F5B0B /* UITableView.swift */; };
+		ABACDEEF25E18045003F5B0B /* UIViewController+Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABACDEEE25E18045003F5B0B /* UIViewController+Alert.swift */; };
+		ABACDF1925E25986003F5B0B /* CBManagerState.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABACDF1825E25985003F5B0B /* CBManagerState.swift */; };
+		ABACDF1F25E26E31003F5B0B /* Printer.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABACDF1E25E26E31003F5B0B /* Printer.swift */; };
+		ABACDF2525E2702C003F5B0B /* DeviceInfo.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ABACDF2425E2702C003F5B0B /* DeviceInfo.storyboard */; };
+		ABACDF2825E27042003F5B0B /* DeviceInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABACDF2725E27042003F5B0B /* DeviceInfoViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -35,6 +40,11 @@
 		ABACDECC25E16D1D003F5B0B /* DeviceTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceTableViewCell.swift; sourceTree = "<group>"; };
 		ABACDECD25E16D1D003F5B0B /* DeviceTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DeviceTableViewCell.xib; sourceTree = "<group>"; };
 		ABACDEE525E16F2B003F5B0B /* UITableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITableView.swift; sourceTree = "<group>"; };
+		ABACDEEE25E18045003F5B0B /* UIViewController+Alert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Alert.swift"; sourceTree = "<group>"; };
+		ABACDF1825E25985003F5B0B /* CBManagerState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CBManagerState.swift; sourceTree = "<group>"; };
+		ABACDF1E25E26E31003F5B0B /* Printer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Printer.swift; sourceTree = "<group>"; };
+		ABACDF2425E2702C003F5B0B /* DeviceInfo.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = DeviceInfo.storyboard; sourceTree = "<group>"; };
+		ABACDF2725E27042003F5B0B /* DeviceInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceInfoViewController.swift; sourceTree = "<group>"; };
 		B2C0F021ABA36A74400929AB /* Pods_BleAppLearning.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BleAppLearning.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -80,8 +90,9 @@
 		ABACDEA925E14C77003F5B0B /* BleAppLearning */ = {
 			isa = PBXGroup;
 			children = (
-				ABACDEE925E17563003F5B0B /* Screens */,
+				ABACDF1D25E26E24003F5B0B /* Helpers */,
 				ABACDEE425E16F1B003F5B0B /* Extensions */,
+				ABACDEE925E17563003F5B0B /* Screens */,
 				ABACDEC725E16CDE003F5B0B /* Cells */,
 				ABACDEAA25E14C77003F5B0B /* AppDelegate.swift */,
 				ABACDEAC25E14C77003F5B0B /* SceneDelegate.swift */,
@@ -106,6 +117,8 @@
 			isa = PBXGroup;
 			children = (
 				ABACDEE525E16F2B003F5B0B /* UITableView.swift */,
+				ABACDEEE25E18045003F5B0B /* UIViewController+Alert.swift */,
+				ABACDF1825E25985003F5B0B /* CBManagerState.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -113,10 +126,36 @@
 		ABACDEE925E17563003F5B0B /* Screens */ = {
 			isa = PBXGroup;
 			children = (
+				ABACDF2325E27011003F5B0B /* DeviceInfo */,
+				ABACDF2225E27004003F5B0B /* Main */,
+			);
+			path = Screens;
+			sourceTree = "<group>";
+		};
+		ABACDF1D25E26E24003F5B0B /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				ABACDF1E25E26E31003F5B0B /* Printer.swift */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
+		ABACDF2225E27004003F5B0B /* Main */ = {
+			isa = PBXGroup;
+			children = (
 				ABACDEAE25E14C77003F5B0B /* MainViewController.swift */,
 				ABACDEB025E14C77003F5B0B /* Main.storyboard */,
 			);
-			path = Screens;
+			path = Main;
+			sourceTree = "<group>";
+		};
+		ABACDF2325E27011003F5B0B /* DeviceInfo */ = {
+			isa = PBXGroup;
+			children = (
+				ABACDF2425E2702C003F5B0B /* DeviceInfo.storyboard */,
+				ABACDF2725E27042003F5B0B /* DeviceInfoViewController.swift */,
+			);
+			path = DeviceInfo;
 			sourceTree = "<group>";
 		};
 		C3BB719F93B186073CE44CC4 /* Frameworks */ = {
@@ -185,6 +224,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				ABACDF2525E2702C003F5B0B /* DeviceInfo.storyboard in Resources */,
 				ABACDEB725E14C78003F5B0B /* LaunchScreen.storyboard in Resources */,
 				ABACDEC025E15184003F5B0B /* AppIcon.png in Resources */,
 				ABACDEB425E14C78003F5B0B /* Assets.xcassets in Resources */,
@@ -225,9 +265,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				ABACDF1925E25986003F5B0B /* CBManagerState.swift in Sources */,
 				ABACDEAF25E14C77003F5B0B /* MainViewController.swift in Sources */,
+				ABACDF2825E27042003F5B0B /* DeviceInfoViewController.swift in Sources */,
 				ABACDEAB25E14C77003F5B0B /* AppDelegate.swift in Sources */,
 				ABACDEE625E16F2B003F5B0B /* UITableView.swift in Sources */,
+				ABACDF1F25E26E31003F5B0B /* Printer.swift in Sources */,
+				ABACDEEF25E18045003F5B0B /* UIViewController+Alert.swift in Sources */,
 				ABACDEAD25E14C77003F5B0B /* SceneDelegate.swift in Sources */,
 				ABACDECE25E16D1D003F5B0B /* DeviceTableViewCell.swift in Sources */,
 			);

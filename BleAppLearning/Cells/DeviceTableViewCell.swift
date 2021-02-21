@@ -18,7 +18,7 @@ class DeviceTableViewCell: UITableViewCell {
         super.awakeFromNib()
     }
 
-    func configure(title: String, id: String, state: CBPeripheralState) {
+    func configure(title: String, id: String, state: DeviceState) {
         nameLabel.text = title
         idLabel.text = id
         activityIndicator.hidesWhenStopped = true
@@ -28,14 +28,12 @@ class DeviceTableViewCell: UITableViewCell {
         switch state {
         case .connected:
             activityIndicator.stopAnimating()
-            stateImageView.image = UIImage(named: "checkmark.circle.fill")
         case .connecting, .disconnecting:
             activityIndicator.startAnimating()
         case .disconnected:
             activityIndicator.stopAnimating()
         @unknown default:
             activityIndicator.stopAnimating()
-            break
         }
     }
 }
