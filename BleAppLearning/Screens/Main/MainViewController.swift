@@ -9,6 +9,24 @@ import UIKit
 import CoreBluetooth
 
 final class MainViewController: UIViewController {
+    struct Props {
+        let state: State; enum State {
+            case initial
+            case loading
+            case failure(message: String)
+        }
+        
+        let onDevice: CommandWith<Device>
+        let onDestroy: Command
+        
+        static let initial: Props = .init(
+            state: .initial,
+            onDevice: .nop,
+            onDestroy: .nop
+        )
+    }
+    private var props: Props = .initial
+
     var bleManager: CBCentralManager?
 
     @IBOutlet private var stateLabel: UILabel!
@@ -25,9 +43,9 @@ final class MainViewController: UIViewController {
     @IBOutlet private var servicesBtn: UIButton!
     
     var devices: [CBPeripheral] = []
-    var connectedDevises: [CBPeripheral] = []
+    var connectedDevises: [Device] = []
     
-    var connectedDevice: CBPeripheral?
+    var connectedDevice: Device?
    
     var services: [CBService] = []
     var characteristics: [CBCharacteristic] = []
@@ -38,6 +56,13 @@ final class MainViewController: UIViewController {
         bleManager = CBCentralManager(delegate: self, queue: nil, options: nil)
     }
 
+    func render(_ props: Props) {
+        self.props = props
+        
+        devicesListTableView.reloadData()
+        self.view.setNeedsLayout()
+    }
+    
     @IBAction func startScanBtnAction(_ sender: UIButton) {
         bleManager?.scanForPeripherals(withServices: nil, options: nil)
         startScanBtn.isEnabled = false
@@ -188,10 +213,6 @@ extension MainViewController: CBPeripheralDelegate {
                     peripheral.readValue(for: $0)
                     
                     Printer.printData($0.value)
-//                    if let data = $0.value {
-//                        let dataStr = String(decoding: data, as: UTF8.self)
-//                        print("[CHARACTERISTIC DATA]: \(dataStr)")
-//                    }
                 }
             })
         }

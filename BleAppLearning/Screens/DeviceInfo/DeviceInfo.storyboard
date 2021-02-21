@@ -11,7 +11,7 @@
         <!--Device Info View Controller-->
         <scene sceneID="feV-Q0-koZ">
             <objects>
-                <viewController id="uhV-i3-9wb" customClass="DeviceInfoViewController" customModule="BleAppLearning" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="DeviceInfoViewController" id="uhV-i3-9wb" customClass="DeviceInfoViewController" customModule="BleAppLearning" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="F0x-0S-u1m">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

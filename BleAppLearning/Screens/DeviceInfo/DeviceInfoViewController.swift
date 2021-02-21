@@ -8,22 +8,36 @@
 import UIKit
 
 class DeviceInfoViewController: UIViewController {
+    struct Props {
+        let title: String
+        
+        let state: State; enum State {
+            case initial
+            case loading
+            case failure(message: String)
+        }
+        
+        let onClose: Command
+        let onDestroy: Command
+        
+        static let initial: Props = .init(
+            title: "",
+            state: .initial,
+            onClose: .nop,
+            onDestroy: .nop
+        )
+    }
+    
+    private var props: Props = .initial
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
     }
     
+    func render(_ props: Props) {
+        self.props = props
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+        self.view.setNeedsLayout()
     }
-    */
 
 }

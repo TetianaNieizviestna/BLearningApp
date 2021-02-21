@@ -1,3 +1,30 @@
-PODFILE CHECKSUM: 6b955b8c7fd000424214677827022f25641acd76
+PODS:
+  - SwiftyRedux (0.3.0):
+    - SwiftyRedux/BatchedActions (= 0.3.0)
+    - SwiftyRedux/Command (= 0.3.0)
+    - SwiftyRedux/Core (= 0.3.0)
+    - SwiftyRedux/SideEffects (= 0.3.0)
+    - SwiftyRedux/Steroids (= 0.3.0)
+  - SwiftyRedux/BatchedActions (0.3.0):
+    - SwiftyRedux/Core
+  - SwiftyRedux/Command (0.3.0):
+    - SwiftyRedux/Core
+  - SwiftyRedux/Core (0.3.0)
+  - SwiftyRedux/SideEffects (0.3.0):
+    - SwiftyRedux/Core
+  - SwiftyRedux/Steroids (0.3.0):
+    - SwiftyRedux/Core
+
+DEPENDENCIES:
+  - SwiftyRedux (~> 0.3.0)
+
+SPEC REPOS:
+  trunk:
+    - SwiftyRedux
+
+SPEC CHECKSUMS:
+  SwiftyRedux: 139404e6f214348762ac9e76c5ea9da349374da4
+
+PODFILE CHECKSUM: 1e05056088f23851ccf858913d0b47b0b11802d9
 
 COCOAPODS: 1.9.3

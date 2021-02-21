@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -23,6 +23,23 @@
 		ABACDF1F25E26E31003F5B0B /* Printer.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABACDF1E25E26E31003F5B0B /* Printer.swift */; };
 		ABACDF2525E2702C003F5B0B /* DeviceInfo.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ABACDF2425E2702C003F5B0B /* DeviceInfo.storyboard */; };
 		ABACDF2825E27042003F5B0B /* DeviceInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABACDF2725E27042003F5B0B /* DeviceInfoViewController.swift */; };
+		ABACDF2D25E27501003F5B0B /* StoreLocator.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABACDF2C25E27501003F5B0B /* StoreLocator.swift */; };
+		ABACDF3125E275AC003F5B0B /* SwiftyReduxBridging.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABACDF3025E275AC003F5B0B /* SwiftyReduxBridging.swift */; };
+		ABACDF3525E27874003F5B0B /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABACDF3425E27874003F5B0B /* AppCoordinator.swift */; };
+		ABACDF3825E27A9C003F5B0B /* MainCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABACDF3725E27A9C003F5B0B /* MainCoordinator.swift */; };
+		ABACDF3E25E27D6E003F5B0B /* Command.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABACDF3D25E27D6E003F5B0B /* Command.swift */; };
+		ABACDF4125E27E16003F5B0B /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABACDF4025E27E16003F5B0B /* Coordinator.swift */; };
+		ABACDF4425E27E33003F5B0B /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABACDF4325E27E33003F5B0B /* Router.swift */; };
+		ABACDF4725E27EC0003F5B0B /* DeviceInfoFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABACDF4625E27EC0003F5B0B /* DeviceInfoFactory.swift */; };
+		ABACDF4A25E27F3B003F5B0B /* UIStoryboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABACDF4925E27F3B003F5B0B /* UIStoryboard.swift */; };
+		ABACDF4E25E28558003F5B0B /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABACDF4D25E28558003F5B0B /* AppState.swift */; };
+		ABACDF5225E28E69003F5B0B /* Action.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABACDF5125E28E69003F5B0B /* Action.swift */; };
+		ABACDF5625E28E98003F5B0B /* MainState.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABACDF5525E28E98003F5B0B /* MainState.swift */; };
+		ABACDF5925E2947A003F5B0B /* Functions.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABACDF5825E2947A003F5B0B /* Functions.swift */; };
+		ABACDF5D25E295A7003F5B0B /* DeviceInfoPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABACDF5C25E295A7003F5B0B /* DeviceInfoPresenter.swift */; };
+		ABACDF6325E2AA73003F5B0B /* CBBridging.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABACDF6225E2AA73003F5B0B /* CBBridging.swift */; };
+		ABACDF6625E2AFA9003F5B0B /* MainFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABACDF6525E2AFA9003F5B0B /* MainFactory.swift */; };
+		ABACDF6925E2B04B003F5B0B /* MainPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABACDF6825E2B04B003F5B0B /* MainPresenter.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -45,6 +62,23 @@
 		ABACDF1E25E26E31003F5B0B /* Printer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Printer.swift; sourceTree = "<group>"; };
 		ABACDF2425E2702C003F5B0B /* DeviceInfo.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = DeviceInfo.storyboard; sourceTree = "<group>"; };
 		ABACDF2725E27042003F5B0B /* DeviceInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceInfoViewController.swift; sourceTree = "<group>"; };
+		ABACDF2C25E27501003F5B0B /* StoreLocator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreLocator.swift; sourceTree = "<group>"; };
+		ABACDF3025E275AC003F5B0B /* SwiftyReduxBridging.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftyReduxBridging.swift; sourceTree = "<group>"; };
+		ABACDF3425E27874003F5B0B /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
+		ABACDF3725E27A9C003F5B0B /* MainCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCoordinator.swift; sourceTree = "<group>"; };
+		ABACDF3D25E27D6E003F5B0B /* Command.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Command.swift; sourceTree = "<group>"; };
+		ABACDF4025E27E16003F5B0B /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
+		ABACDF4325E27E33003F5B0B /* Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
+		ABACDF4625E27EC0003F5B0B /* DeviceInfoFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceInfoFactory.swift; sourceTree = "<group>"; };
+		ABACDF4925E27F3B003F5B0B /* UIStoryboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIStoryboard.swift; sourceTree = "<group>"; };
+		ABACDF4D25E28558003F5B0B /* AppState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
+		ABACDF5125E28E69003F5B0B /* Action.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Action.swift; sourceTree = "<group>"; };
+		ABACDF5525E28E98003F5B0B /* MainState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainState.swift; sourceTree = "<group>"; };
+		ABACDF5825E2947A003F5B0B /* Functions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Functions.swift; sourceTree = "<group>"; };
+		ABACDF5C25E295A7003F5B0B /* DeviceInfoPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceInfoPresenter.swift; sourceTree = "<group>"; };
+		ABACDF6225E2AA73003F5B0B /* CBBridging.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CBBridging.swift; sourceTree = "<group>"; };
+		ABACDF6525E2AFA9003F5B0B /* MainFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainFactory.swift; sourceTree = "<group>"; };
+		ABACDF6825E2B04B003F5B0B /* MainPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainPresenter.swift; sourceTree = "<group>"; };
 		B2C0F021ABA36A74400929AB /* Pods_BleAppLearning.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BleAppLearning.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -90,6 +124,10 @@
 		ABACDEA925E14C77003F5B0B /* BleAppLearning */ = {
 			isa = PBXGroup;
 			children = (
+				ABACDF5025E28E61003F5B0B /* Action */,
+				ABACDF4C25E2854E003F5B0B /* State */,
+				ABACDF2F25E27591003F5B0B /* Abstractions */,
+				ABACDF2A25E274EA003F5B0B /* Services */,
 				ABACDF1D25E26E24003F5B0B /* Helpers */,
 				ABACDEE425E16F1B003F5B0B /* Extensions */,
 				ABACDEE925E17563003F5B0B /* Screens */,
@@ -100,6 +138,7 @@
 				ABACDEB525E14C78003F5B0B /* LaunchScreen.storyboard */,
 				ABACDEBF25E15184003F5B0B /* AppIcon.png */,
 				ABACDEB825E14C78003F5B0B /* Info.plist */,
+				ABACDF3425E27874003F5B0B /* AppCoordinator.swift */,
 			);
 			path = BleAppLearning;
 			sourceTree = "<group>";
@@ -119,6 +158,7 @@
 				ABACDEE525E16F2B003F5B0B /* UITableView.swift */,
 				ABACDEEE25E18045003F5B0B /* UIViewController+Alert.swift */,
 				ABACDF1825E25985003F5B0B /* CBManagerState.swift */,
+				ABACDF4925E27F3B003F5B0B /* UIStoryboard.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -135,6 +175,7 @@
 		ABACDF1D25E26E24003F5B0B /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				ABACDF5825E2947A003F5B0B /* Functions.swift */,
 				ABACDF1E25E26E31003F5B0B /* Printer.swift */,
 			);
 			path = Helpers;
@@ -143,8 +184,11 @@
 		ABACDF2225E27004003F5B0B /* Main */ = {
 			isa = PBXGroup;
 			children = (
-				ABACDEAE25E14C77003F5B0B /* MainViewController.swift */,
 				ABACDEB025E14C77003F5B0B /* Main.storyboard */,
+				ABACDEAE25E14C77003F5B0B /* MainViewController.swift */,
+				ABACDF3725E27A9C003F5B0B /* MainCoordinator.swift */,
+				ABACDF6525E2AFA9003F5B0B /* MainFactory.swift */,
+				ABACDF6825E2B04B003F5B0B /* MainPresenter.swift */,
 			);
 			path = Main;
 			sourceTree = "<group>";
@@ -154,8 +198,55 @@
 			children = (
 				ABACDF2425E2702C003F5B0B /* DeviceInfo.storyboard */,
 				ABACDF2725E27042003F5B0B /* DeviceInfoViewController.swift */,
+				ABACDF4625E27EC0003F5B0B /* DeviceInfoFactory.swift */,
+				ABACDF5C25E295A7003F5B0B /* DeviceInfoPresenter.swift */,
 			);
 			path = DeviceInfo;
+			sourceTree = "<group>";
+		};
+		ABACDF2A25E274EA003F5B0B /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				ABACDF2B25E274F2003F5B0B /* Locators */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		ABACDF2B25E274F2003F5B0B /* Locators */ = {
+			isa = PBXGroup;
+			children = (
+				ABACDF2C25E27501003F5B0B /* StoreLocator.swift */,
+			);
+			path = Locators;
+			sourceTree = "<group>";
+		};
+		ABACDF2F25E27591003F5B0B /* Abstractions */ = {
+			isa = PBXGroup;
+			children = (
+				ABACDF3025E275AC003F5B0B /* SwiftyReduxBridging.swift */,
+				ABACDF3D25E27D6E003F5B0B /* Command.swift */,
+				ABACDF4025E27E16003F5B0B /* Coordinator.swift */,
+				ABACDF4325E27E33003F5B0B /* Router.swift */,
+				ABACDF6225E2AA73003F5B0B /* CBBridging.swift */,
+			);
+			path = Abstractions;
+			sourceTree = "<group>";
+		};
+		ABACDF4C25E2854E003F5B0B /* State */ = {
+			isa = PBXGroup;
+			children = (
+				ABACDF4D25E28558003F5B0B /* AppState.swift */,
+				ABACDF5525E28E98003F5B0B /* MainState.swift */,
+			);
+			path = State;
+			sourceTree = "<group>";
+		};
+		ABACDF5025E28E61003F5B0B /* Action */ = {
+			isa = PBXGroup;
+			children = (
+				ABACDF5125E28E69003F5B0B /* Action.swift */,
+			);
+			path = Action;
 			sourceTree = "<group>";
 		};
 		C3BB719F93B186073CE44CC4 /* Frameworks */ = {
@@ -177,6 +268,7 @@
 				ABACDEA325E14C77003F5B0B /* Sources */,
 				ABACDEA425E14C77003F5B0B /* Frameworks */,
 				ABACDEA525E14C77003F5B0B /* Resources */,
+				FF8D105DAF9B6BB6B28B26F8 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -258,6 +350,23 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
+		FF8D105DAF9B6BB6B28B26F8 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-BleAppLearning/Pods-BleAppLearning-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-BleAppLearning/Pods-BleAppLearning-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-BleAppLearning/Pods-BleAppLearning-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -265,13 +374,30 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				ABACDF3525E27874003F5B0B /* AppCoordinator.swift in Sources */,
+				ABACDF6625E2AFA9003F5B0B /* MainFactory.swift in Sources */,
+				ABACDF2D25E27501003F5B0B /* StoreLocator.swift in Sources */,
+				ABACDF4E25E28558003F5B0B /* AppState.swift in Sources */,
+				ABACDF6925E2B04B003F5B0B /* MainPresenter.swift in Sources */,
+				ABACDF4125E27E16003F5B0B /* Coordinator.swift in Sources */,
 				ABACDF1925E25986003F5B0B /* CBManagerState.swift in Sources */,
 				ABACDEAF25E14C77003F5B0B /* MainViewController.swift in Sources */,
 				ABACDF2825E27042003F5B0B /* DeviceInfoViewController.swift in Sources */,
+				ABACDF5625E28E98003F5B0B /* MainState.swift in Sources */,
+				ABACDF4A25E27F3B003F5B0B /* UIStoryboard.swift in Sources */,
 				ABACDEAB25E14C77003F5B0B /* AppDelegate.swift in Sources */,
+				ABACDF5D25E295A7003F5B0B /* DeviceInfoPresenter.swift in Sources */,
+				ABACDF3125E275AC003F5B0B /* SwiftyReduxBridging.swift in Sources */,
+				ABACDF4425E27E33003F5B0B /* Router.swift in Sources */,
 				ABACDEE625E16F2B003F5B0B /* UITableView.swift in Sources */,
+				ABACDF6325E2AA73003F5B0B /* CBBridging.swift in Sources */,
 				ABACDF1F25E26E31003F5B0B /* Printer.swift in Sources */,
+				ABACDF5225E28E69003F5B0B /* Action.swift in Sources */,
+				ABACDF5925E2947A003F5B0B /* Functions.swift in Sources */,
 				ABACDEEF25E18045003F5B0B /* UIViewController+Alert.swift in Sources */,
+				ABACDF4725E27EC0003F5B0B /* DeviceInfoFactory.swift in Sources */,
+				ABACDF3825E27A9C003F5B0B /* MainCoordinator.swift in Sources */,
+				ABACDF3E25E27D6E003F5B0B /* Command.swift in Sources */,
 				ABACDEAD25E14C77003F5B0B /* SceneDelegate.swift in Sources */,
 				ABACDECE25E16D1D003F5B0B /* DeviceTableViewCell.swift in Sources */,
 			);

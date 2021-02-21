@@ -6,7 +6,6 @@
 //
 
 import CoreBluetooth
-typealias DeviceState = CBPeripheralState
 
 extension CBManagerState {
     var name: String {

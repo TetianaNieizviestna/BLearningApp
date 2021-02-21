@@ -6,5 +6,6 @@ target 'BleAppLearning' do
   use_frameworks!
 
   # Pods for BleAppLearning
+  pod 'SwiftyRedux', '~> 0.3.0'
 
 end
