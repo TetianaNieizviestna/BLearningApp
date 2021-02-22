@@ -40,6 +40,7 @@
 		ABACDF6325E2AA73003F5B0B /* CBBridging.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABACDF6225E2AA73003F5B0B /* CBBridging.swift */; };
 		ABACDF6625E2AFA9003F5B0B /* MainFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABACDF6525E2AFA9003F5B0B /* MainFactory.swift */; };
 		ABACDF6925E2B04B003F5B0B /* MainPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABACDF6825E2B04B003F5B0B /* MainPresenter.swift */; };
+		ABACDF6F25E3D29A003F5B0B /* DeviceAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABACDF6E25E3D29A003F5B0B /* DeviceAction.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -79,6 +80,7 @@
 		ABACDF6225E2AA73003F5B0B /* CBBridging.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CBBridging.swift; sourceTree = "<group>"; };
 		ABACDF6525E2AFA9003F5B0B /* MainFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainFactory.swift; sourceTree = "<group>"; };
 		ABACDF6825E2B04B003F5B0B /* MainPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainPresenter.swift; sourceTree = "<group>"; };
+		ABACDF6E25E3D29A003F5B0B /* DeviceAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceAction.swift; sourceTree = "<group>"; };
 		B2C0F021ABA36A74400929AB /* Pods_BleAppLearning.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BleAppLearning.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -245,6 +247,7 @@
 			isa = PBXGroup;
 			children = (
 				ABACDF5125E28E69003F5B0B /* Action.swift */,
+				ABACDF6E25E3D29A003F5B0B /* DeviceAction.swift */,
 			);
 			path = Action;
 			sourceTree = "<group>";
@@ -389,6 +392,7 @@
 				ABACDF5D25E295A7003F5B0B /* DeviceInfoPresenter.swift in Sources */,
 				ABACDF3125E275AC003F5B0B /* SwiftyReduxBridging.swift in Sources */,
 				ABACDF4425E27E33003F5B0B /* Router.swift in Sources */,
+				ABACDF6F25E3D29A003F5B0B /* DeviceAction.swift in Sources */,
 				ABACDEE625E16F2B003F5B0B /* UITableView.swift in Sources */,
 				ABACDF6325E2AA73003F5B0B /* CBBridging.swift in Sources */,
 				ABACDF1F25E26E31003F5B0B /* Printer.swift in Sources */,

@@ -9,6 +9,23 @@ import UIKit
 import CoreBluetooth
 
 class DeviceTableViewCell: UITableViewCell {
+    struct Props {
+        let title: String
+        let id: String
+        let state: DeviceState
+
+        let onSelect: Command
+        
+        static let initial: Props = .init(
+            title: "",
+            id: "",
+            state: .disconnected,
+            onSelect: .nop
+        )
+    }
+    
+    private var props: Props = .initial
+    
     @IBOutlet private var nameLabel: UILabel!
     @IBOutlet private var idLabel: UILabel!
     @IBOutlet private var stateImageView: UIImageView!
@@ -17,15 +34,16 @@ class DeviceTableViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
     }
-
-    func configure(title: String, id: String, state: DeviceState) {
-        nameLabel.text = title
-        idLabel.text = id
+    
+    func render(_ props: Props) {
+        self.props = props
+        nameLabel.text = props.title
+        idLabel.text = props.id
         activityIndicator.hidesWhenStopped = true
         
-        stateImageView.isHidden = state != .connected
+        stateImageView.isHidden = props.state != .connected
 
-        switch state {
+        switch props.state {
         case .connected:
             activityIndicator.stopAnimating()
         case .connecting, .disconnecting:

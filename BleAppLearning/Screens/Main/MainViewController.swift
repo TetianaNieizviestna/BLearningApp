@@ -12,16 +12,38 @@ final class MainViewController: UIViewController {
     struct Props {
         let state: State; enum State {
             case initial
-            case loading
+            case scanning
             case failure(message: String)
         }
         
-        let onDevice: CommandWith<Device>
+        let status: String
+        let items: [DeviceTableViewCell.Props]
+        
+        let devices: [Device]
+        let connectedDevices: [Device]
+        
+        let currentDevice: Device?
+        
+        let foundDevice: CommandWith<Device>
+        let connectDevice: CommandWith<Device>
+        let disconnectDevice: CommandWith<Device>
+        let changeState: CommandWith<Device>
+        let changeBleStatus: CommandWith<String>
+        
         let onDestroy: Command
         
         static let initial: Props = .init(
             state: .initial,
-            onDevice: .nop,
+            status: "",
+            items: [],
+            devices: [],
+            connectedDevices: [],
+            currentDevice: nil,
+            foundDevice: .nop,
+            connectDevice: .nop,
+            disconnectDevice: .nop,
+            changeState: .nop,
+            changeBleStatus: .nop,
             onDestroy: .nop
         )
     }
@@ -42,10 +64,10 @@ final class MainViewController: UIViewController {
     
     @IBOutlet private var servicesBtn: UIButton!
     
-    var devices: [CBPeripheral] = []
-    var connectedDevises: [Device] = []
-    
-    var connectedDevice: Device?
+//    var devices: [Device] = []
+//    var connectedDevises: [Device] = []
+//
+//    var connectedDevice: Device?
    
     var services: [CBService] = []
     var characteristics: [CBCharacteristic] = []
@@ -59,6 +81,10 @@ final class MainViewController: UIViewController {
     func render(_ props: Props) {
         self.props = props
         
+        props.currentDevice?.delegate = self
+        deviceNameLabel.text = props.currentDevice?.name ?? ""
+        stateLabel.text = props.status
+
         devicesListTableView.reloadData()
         self.view.setNeedsLayout()
     }
@@ -74,7 +100,8 @@ final class MainViewController: UIViewController {
     }
     
     @IBAction func servicesBtnAction(_ sender: UIButton) {
-        connectedDevice?.discoverServices(nil)
+//        connectedDevice?.discoverServices(nil)
+        print("servicesBtnAction")
     }
     
     private func stopScan() {
@@ -108,23 +135,33 @@ final class MainViewController: UIViewController {
     }
     
     private func changeDeviceConnection(_ index: Int) {
-        switch devices[index].state {
+        switch props.items[index].state {
         case .disconnected:
-            bleManager?.connect(devices[index], options: nil)
-            connectedDevice = devices[index]
-            connectedDevice?.delegate = self
-            deviceNameLabel.text = connectedDevice?.name ?? ""
+            bleManager?.connect(props.devices[index], options: nil)
+//            connectedDevice = devices[index]
+//            connectedDevice?.delegate = self
+//            deviceNameLabel.text = connectedDevice?.name ?? ""
         case .connected:
-            bleManager?.cancelPeripheralConnection(devices[index])
-            connectedDevice = nil
-            deviceNameLabel.text = ""
+            bleManager?.cancelPeripheralConnection(props.devices[index])
+//            connectedDevice = nil
+//            deviceNameLabel.text = ""
         default:
             break
         }
-    }
-    
-    private func reloadData() {
         
+//        switch devices[index].state {
+//        case .disconnected:
+//            bleManager?.connect(devices[index], options: nil)
+//            connectedDevice = devices[index]
+//            connectedDevice?.delegate = self
+//            deviceNameLabel.text = connectedDevice?.name ?? ""
+//        case .connected:
+//            bleManager?.cancelPeripheralConnection(devices[index])
+//            connectedDevice = nil
+//            deviceNameLabel.text = ""
+//        default:
+//            break
+//        }
     }
     
     private func setDefaultBtnStates() {
@@ -135,10 +172,12 @@ final class MainViewController: UIViewController {
     private func changeDeviceState(for device: CBPeripheral, error: Error? = nil) {
         print("DEVICE \"\(device.name ?? "no name")\" state: \(device.state.name)")
         handleError(source: "changeDeviceState", error: error) {
-            if let firstIndex = self.devices.firstIndex(where: { $0.identifier == device.identifier }) {
-                self.devices[firstIndex] = device
-            }
-            self.devicesListTableView.reloadData()
+//            if let firstIndex = self.devices.firstIndex(where: { $0.identifier == device.identifier }) {
+//                self.devices[firstIndex] = device
+//            }
+//            self.devicesListTableView.reloadData()
+            
+            self.props.changeState.perform(with: device)
         }
     }
 }
@@ -151,34 +190,42 @@ extension MainViewController: UITableViewDelegate {
 
 extension MainViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return devices.count
+        return props.devices.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cellProps = props.items[indexPath.row]
+
         guard let cell = tableView.dequeueReusableCell(withIdentifier: DeviceTableViewCell.identifier) as? DeviceTableViewCell else { return UITableViewCell() }
-        let device = devices[indexPath.row]
-        cell.configure(title: device.name ?? "", id: "\(device.identifier)", state: device.state)
+        cell.render(cellProps)
+
+//        let device = devices[indexPath.row]
+//        cell.configure(title: device.name ?? "", id: "\(device.identifier)", state: device.state)
         return cell
     }
 }
 
 extension MainViewController: CBCentralManagerDelegate {
     func centralManagerDidUpdateState(_ central: CBCentralManager) {
-        stateLabel.text = "Bluetooth: \(central.state.name)"
+        props.changeBleStatus.perform(with: central.state.name)
     }
 
     func centralManager(_ central: CBCentralManager, didDiscover peripheral: CBPeripheral, advertisementData: [String : Any], rssi RSSI: NSNumber) {
-        if !devices.contains(where: { $0.identifier == peripheral.identifier }) {
-            devices.append(peripheral)
-        } else {
-            changeDeviceState(for: peripheral)
-        }
-        devicesListTableView.reloadData()
+//        if !devices.contains(where: { $0.identifier == peripheral.identifier }) {
+//            devices.append(peripheral)
+//        } else {
+//            changeDeviceState(for: peripheral)
+//        }
+//        devicesListTableView.reloadData()
+        
+        props.foundDevice.perform(with: peripheral)
+//        changeDeviceState(for: peripheral)
     }
     
     func centralManager(_ central: CBCentralManager, didConnect peripheral: CBPeripheral) {
         stopScan()
         changeDeviceState(for: peripheral)
+        self.props.connectDevice.perform(with: peripheral)
     }
     
     func centralManager(_ central: CBCentralManager, didDisconnectPeripheral peripheral: CBPeripheral, error: Error?) {

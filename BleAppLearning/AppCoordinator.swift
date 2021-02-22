@@ -27,56 +27,17 @@ final class AppCoordinator: Coordinator {
     }
     
     func start() {
+        disposable = store.subscribeUnique(on: .main) { [weak self] state in
+            guard let strongSelf = self else { return }
+            let mainCoordinator = MainCoordinator(window: strongSelf.window)
+            mainCoordinator.start()
+            strongSelf.activeCoordinator = mainCoordinator
+        }
 
-        let mainCoordinator = MainCoordinator(window: window)
-        mainCoordinator.start()
-        activeCoordinator = mainCoordinator
-
-//        let rootController = main()
-//        window.rootViewController = rootController
-//        self.rootController = rootController
-
-//        disposable = store.subscribeUnique(on: .main) { [weak self] state in
-//            guard let `self` = self else { return }
-//                self.route(.main)
-//                self.store.dispatch(AppInitializationAction())
-//        }
+//        let mainCoordinator = MainCoordinator(window: window)
+//        mainCoordinator.start()
+//        activeCoordinator = mainCoordinator
     }
-//
-//    private func route(_ route: Route) {
-//        switch route {
-//        case .main:
-//            let output = MainCoordinator.Output(
-//                deviceInfo: CommandWith { [weak self] device in
-//                    self?.route(.deviceInfo(device))
-//            })
-//
-//        case .deviceInfo(let device):
-//            deviceInfo(device)
-//            let output = DeviceInfoFactory.Output(close: Command { [weak self] in
-//                self?.route(.deviceInfo(device))
-//            })
-//
-//        }
-//    }
-    
-//    private func deviceInfo(_ device: Device) -> DeviceInfoViewController {
-//        let output = DeviceInfoFactory.Output(
-//            close: Command { [weak self] in
-//                self?.route(.deviceInfoDismiss(device))
-//            }
-//        )
-//        return DeviceInfoFactory().default(output, device: device)
-//    }
-    
-//    private func splash() -> SplashViewController {
-//        let output = SplashScreenFactory.Output(
-//            main: Command { [weak self] in
-//                self?.route(.main)
-//            }
-//        )
-//        return SplashScreenFactory().default(output)
-//    }
 
     deinit {
         disposable?.dispose()

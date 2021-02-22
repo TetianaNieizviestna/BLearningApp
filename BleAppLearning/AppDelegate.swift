@@ -37,7 +37,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     private func startApp() {
         guard let window = self.window else { return }
-        let appCoordinator = AppCoordinator(window: window)
+        let appCoordinator = AppCoordinator(window: window, store: store)
         appCoordinator.start()
         self.activeCoordinator = appCoordinator
     }
