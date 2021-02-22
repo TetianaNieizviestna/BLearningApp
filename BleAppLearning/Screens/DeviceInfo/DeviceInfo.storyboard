@@ -15,13 +15,52 @@
                     <view key="view" contentMode="scaleToFill" id="F0x-0S-u1m">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="close" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Jgh-hZ-zIQ">
+                                <rect key="frame" x="359" y="59" width="40" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="40" id="Xi1-AQ-h6o"/>
+                                    <constraint firstAttribute="height" constant="40" id="vEC-pq-f1q"/>
+                                </constraints>
+                                <connections>
+                                    <action selector="closeBtnAction:" destination="uhV-i3-9wb" eventType="touchUpInside" id="Rzq-FX-OkB"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Zp8-w3-bYI">
+                                <rect key="frame" x="50" y="68.5" width="304" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="Fwa-7u-wkg"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <gestureRecognizers/>
+                        <constraints>
+                            <constraint firstItem="Jgh-hZ-zIQ" firstAttribute="top" secondItem="Fwa-7u-wkg" secondAttribute="top" constant="15" id="CDj-Eb-tu6"/>
+                            <constraint firstItem="Fwa-7u-wkg" firstAttribute="trailing" secondItem="Jgh-hZ-zIQ" secondAttribute="trailing" constant="15" id="MYs-n8-jsW"/>
+                            <constraint firstItem="Zp8-w3-bYI" firstAttribute="leading" secondItem="Fwa-7u-wkg" secondAttribute="leading" constant="50" id="Xe1-tg-Gi6"/>
+                            <constraint firstItem="Jgh-hZ-zIQ" firstAttribute="leading" secondItem="Zp8-w3-bYI" secondAttribute="trailing" constant="5" id="moh-WK-Icw"/>
+                            <constraint firstItem="Zp8-w3-bYI" firstAttribute="centerY" secondItem="Jgh-hZ-zIQ" secondAttribute="centerY" id="uud-hu-e4k"/>
+                        </constraints>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="2Ue-Vg-mlx" appends="YES" id="JTD-jJ-BnK"/>
+                        </connections>
                     </view>
+                    <connections>
+                        <outlet property="closeBtn" destination="Jgh-hZ-zIQ" id="3Vl-0D-nFG"/>
+                        <outlet property="titleLabel" destination="Zp8-w3-bYI" id="eR9-TF-wX0"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ZZt-gP-Dpl" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <swipeGestureRecognizer direction="right" id="2Ue-Vg-mlx">
+                    <connections>
+                        <action selector="swipeGestureAction:" destination="uhV-i3-9wb" id="hqm-9a-4Sb"/>
+                        <outlet property="delegate" destination="F0x-0S-u1m" id="O9Y-dP-QN7"/>
+                    </connections>
+                </swipeGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="-530" y="110"/>
+            <point key="canvasLocation" x="-530.43478260869574" y="109.82142857142857"/>
         </scene>
     </scenes>
     <resources>

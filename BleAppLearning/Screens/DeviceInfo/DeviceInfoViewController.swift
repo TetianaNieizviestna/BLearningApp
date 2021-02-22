@@ -30,14 +30,24 @@ class DeviceInfoViewController: UIViewController {
     
     private var props: Props = .initial
 
+    @IBOutlet private var closeBtn: UIButton!
+    @IBOutlet private var titleLabel: UILabel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
     }
     
     func render(_ props: Props) {
         self.props = props
-
+        titleLabel.text = props.title
         self.view.setNeedsLayout()
     }
 
+    @IBAction func closeBtnAction(_ sender: UIButton) {
+        props.onClose.perform()
+    }
+    
+    @IBAction func swipeGestureAction(_ sender: UISwipeGestureRecognizer) {
+        props.onClose.perform()
+    }
 }

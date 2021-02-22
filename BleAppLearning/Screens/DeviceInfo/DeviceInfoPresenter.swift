@@ -18,7 +18,7 @@ struct DeviceInfoPresenter {
     func present(state: AppState, device: Device) {
         render.perform(
             with: .init(
-                title: "Device: \(device.name ?? "no name")",
+                title: device.name ?? "no name",
                 state:  getState(state),
                 onClose: onClose,
                 onDestroy: endObserving
