@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		50D5086ED5390DE442082151 /* Pods_BleAppLearning.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B2C0F021ABA36A74400929AB /* Pods_BleAppLearning.framework */; };
 		ABACDEAB25E14C77003F5B0B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABACDEAA25E14C77003F5B0B /* AppDelegate.swift */; };
-		ABACDEAD25E14C77003F5B0B /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABACDEAC25E14C77003F5B0B /* SceneDelegate.swift */; };
 		ABACDEAF25E14C77003F5B0B /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABACDEAE25E14C77003F5B0B /* MainViewController.swift */; };
 		ABACDEB225E14C77003F5B0B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ABACDEB025E14C77003F5B0B /* Main.storyboard */; };
 		ABACDEB425E14C78003F5B0B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = ABACDEB325E14C78003F5B0B /* Assets.xcassets */; };
@@ -48,7 +47,6 @@
 		41AC48F4227DFDC615D49347 /* Pods-BleAppLearning.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BleAppLearning.release.xcconfig"; path = "Target Support Files/Pods-BleAppLearning/Pods-BleAppLearning.release.xcconfig"; sourceTree = "<group>"; };
 		ABACDEA725E14C77003F5B0B /* BleAppLearning.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BleAppLearning.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		ABACDEAA25E14C77003F5B0B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		ABACDEAC25E14C77003F5B0B /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		ABACDEAE25E14C77003F5B0B /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		ABACDEB125E14C77003F5B0B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		ABACDEB325E14C78003F5B0B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -135,12 +133,11 @@
 				ABACDEE925E17563003F5B0B /* Screens */,
 				ABACDEC725E16CDE003F5B0B /* Cells */,
 				ABACDEAA25E14C77003F5B0B /* AppDelegate.swift */,
-				ABACDEAC25E14C77003F5B0B /* SceneDelegate.swift */,
+				ABACDF3425E27874003F5B0B /* AppCoordinator.swift */,
 				ABACDEB325E14C78003F5B0B /* Assets.xcassets */,
 				ABACDEB525E14C78003F5B0B /* LaunchScreen.storyboard */,
 				ABACDEBF25E15184003F5B0B /* AppIcon.png */,
 				ABACDEB825E14C78003F5B0B /* Info.plist */,
-				ABACDF3425E27874003F5B0B /* AppCoordinator.swift */,
 			);
 			path = BleAppLearning;
 			sourceTree = "<group>";
@@ -402,7 +399,6 @@
 				ABACDF4725E27EC0003F5B0B /* DeviceInfoFactory.swift in Sources */,
 				ABACDF3825E27A9C003F5B0B /* MainCoordinator.swift in Sources */,
 				ABACDF3E25E27D6E003F5B0B /* Command.swift in Sources */,
-				ABACDEAD25E14C77003F5B0B /* SceneDelegate.swift in Sources */,
 				ABACDECE25E16D1D003F5B0B /* DeviceTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

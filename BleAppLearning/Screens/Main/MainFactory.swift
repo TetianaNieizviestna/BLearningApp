@@ -25,7 +25,6 @@ final class MainFactory {
     func `default`(_ output: Output = .initial)
         -> MainViewController {
             let controller: MainViewController = Storyboard.main.instantiate()
-            
             var disposable: Disposable?
             let endObserving = Command { disposable?.dispose() }
             let dispatcher = CommandWith { [weak store] in store?.dispatch($0) }

@@ -63,12 +63,7 @@ final class MainViewController: UIViewController {
     @IBOutlet private var stopScanBtn: UIButton!
     
     @IBOutlet private var servicesBtn: UIButton!
-    
-//    var devices: [Device] = []
-//    var connectedDevises: [Device] = []
-//
-//    var connectedDevice: Device?
-   
+       
     var services: [CBService] = []
     var characteristics: [CBCharacteristic] = []
 
@@ -138,30 +133,11 @@ final class MainViewController: UIViewController {
         switch props.items[index].state {
         case .disconnected:
             bleManager?.connect(props.devices[index], options: nil)
-//            connectedDevice = devices[index]
-//            connectedDevice?.delegate = self
-//            deviceNameLabel.text = connectedDevice?.name ?? ""
         case .connected:
             bleManager?.cancelPeripheralConnection(props.devices[index])
-//            connectedDevice = nil
-//            deviceNameLabel.text = ""
         default:
             break
         }
-        
-//        switch devices[index].state {
-//        case .disconnected:
-//            bleManager?.connect(devices[index], options: nil)
-//            connectedDevice = devices[index]
-//            connectedDevice?.delegate = self
-//            deviceNameLabel.text = connectedDevice?.name ?? ""
-//        case .connected:
-//            bleManager?.cancelPeripheralConnection(devices[index])
-//            connectedDevice = nil
-//            deviceNameLabel.text = ""
-//        default:
-//            break
-//        }
     }
     
     private func setDefaultBtnStates() {
@@ -172,11 +148,6 @@ final class MainViewController: UIViewController {
     private func changeDeviceState(for device: CBPeripheral, error: Error? = nil) {
         print("DEVICE \"\(device.name ?? "no name")\" state: \(device.state.name)")
         handleError(source: "changeDeviceState", error: error) {
-//            if let firstIndex = self.devices.firstIndex(where: { $0.identifier == device.identifier }) {
-//                self.devices[firstIndex] = device
-//            }
-//            self.devicesListTableView.reloadData()
-            
             self.props.changeState.perform(with: device)
         }
     }
@@ -185,6 +156,7 @@ final class MainViewController: UIViewController {
 extension MainViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         changeDeviceConnection(indexPath.row)
+        props.items[indexPath.row].onSelect.perform()
     }
 }
 
@@ -198,9 +170,6 @@ extension MainViewController: UITableViewDataSource {
 
         guard let cell = tableView.dequeueReusableCell(withIdentifier: DeviceTableViewCell.identifier) as? DeviceTableViewCell else { return UITableViewCell() }
         cell.render(cellProps)
-
-//        let device = devices[indexPath.row]
-//        cell.configure(title: device.name ?? "", id: "\(device.identifier)", state: device.state)
         return cell
     }
 }
@@ -211,15 +180,7 @@ extension MainViewController: CBCentralManagerDelegate {
     }
 
     func centralManager(_ central: CBCentralManager, didDiscover peripheral: CBPeripheral, advertisementData: [String : Any], rssi RSSI: NSNumber) {
-//        if !devices.contains(where: { $0.identifier == peripheral.identifier }) {
-//            devices.append(peripheral)
-//        } else {
-//            changeDeviceState(for: peripheral)
-//        }
-//        devicesListTableView.reloadData()
-        
         props.foundDevice.perform(with: peripheral)
-//        changeDeviceState(for: peripheral)
     }
     
     func centralManager(_ central: CBCentralManager, didConnect peripheral: CBPeripheral) {

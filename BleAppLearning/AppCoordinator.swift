@@ -27,16 +27,16 @@ final class AppCoordinator: Coordinator {
     }
     
     func start() {
-        disposable = store.subscribeUnique(on: .main) { [weak self] state in
-            guard let strongSelf = self else { return }
-            let mainCoordinator = MainCoordinator(window: strongSelf.window)
-            mainCoordinator.start()
-            strongSelf.activeCoordinator = mainCoordinator
-        }
+//        disposable = store.subscribeUnique(on: .main) { [weak self] state in
+//            guard let strongSelf = self else { return }
+//            let mainCoordinator = MainCoordinator(window: strongSelf.window)
+//            mainCoordinator.start()
+//            strongSelf.activeCoordinator = mainCoordinator
+//        }
 
-//        let mainCoordinator = MainCoordinator(window: window)
-//        mainCoordinator.start()
-//        activeCoordinator = mainCoordinator
+        let mainCoordinator = MainCoordinator(window: window)
+        mainCoordinator.start()
+        activeCoordinator = mainCoordinator
     }
 
     deinit {
