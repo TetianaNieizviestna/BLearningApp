@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		50D5086ED5390DE442082151 /* Pods_BleAppLearning.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B2C0F021ABA36A74400929AB /* Pods_BleAppLearning.framework */; };
+		AB95701925E4077700737F0A /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB95701825E4077700737F0A /* Logger.swift */; };
 		ABACDEAB25E14C77003F5B0B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABACDEAA25E14C77003F5B0B /* AppDelegate.swift */; };
 		ABACDEAF25E14C77003F5B0B /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABACDEAE25E14C77003F5B0B /* MainViewController.swift */; };
 		ABACDEB225E14C77003F5B0B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ABACDEB025E14C77003F5B0B /* Main.storyboard */; };
@@ -45,6 +46,7 @@
 /* Begin PBXFileReference section */
 		34071AF668234CD11E881C3B /* Pods-BleAppLearning.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BleAppLearning.debug.xcconfig"; path = "Target Support Files/Pods-BleAppLearning/Pods-BleAppLearning.debug.xcconfig"; sourceTree = "<group>"; };
 		41AC48F4227DFDC615D49347 /* Pods-BleAppLearning.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BleAppLearning.release.xcconfig"; path = "Target Support Files/Pods-BleAppLearning/Pods-BleAppLearning.release.xcconfig"; sourceTree = "<group>"; };
+		AB95701825E4077700737F0A /* Logger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Logger.swift; sourceTree = "<group>"; };
 		ABACDEA725E14C77003F5B0B /* BleAppLearning.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BleAppLearning.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		ABACDEAA25E14C77003F5B0B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		ABACDEAE25E14C77003F5B0B /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
@@ -103,6 +105,14 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
+		AB95701725E4076A00737F0A /* Middlewares */ = {
+			isa = PBXGroup;
+			children = (
+				AB95701825E4077700737F0A /* Logger.swift */,
+			);
+			path = Middlewares;
+			sourceTree = "<group>";
+		};
 		ABACDE9E25E14C77003F5B0B = {
 			isa = PBXGroup;
 			children = (
@@ -124,6 +134,7 @@
 		ABACDEA925E14C77003F5B0B /* BleAppLearning */ = {
 			isa = PBXGroup;
 			children = (
+				AB95701725E4076A00737F0A /* Middlewares */,
 				ABACDF5025E28E61003F5B0B /* Action */,
 				ABACDF4C25E2854E003F5B0B /* State */,
 				ABACDF2F25E27591003F5B0B /* Abstractions */,
@@ -378,6 +389,7 @@
 				ABACDF6625E2AFA9003F5B0B /* MainFactory.swift in Sources */,
 				ABACDF2D25E27501003F5B0B /* StoreLocator.swift in Sources */,
 				ABACDF4E25E28558003F5B0B /* AppState.swift in Sources */,
+				AB95701925E4077700737F0A /* Logger.swift in Sources */,
 				ABACDF6925E2B04B003F5B0B /* MainPresenter.swift in Sources */,
 				ABACDF4125E27E16003F5B0B /* Coordinator.swift in Sources */,
 				ABACDF1925E25986003F5B0B /* CBManagerState.swift in Sources */,

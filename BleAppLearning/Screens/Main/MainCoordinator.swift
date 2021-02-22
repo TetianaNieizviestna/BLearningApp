@@ -10,7 +10,7 @@ import UIKit
 extension MainCoordinator {
     private enum Route {
         case deviceInfo(Device)
-        case deviceInfoDismiss(Device)
+        case deviceInfoDismiss
     }
 }
 
@@ -31,9 +31,9 @@ final class MainCoordinator: Coordinator {
     private func route(_ route: Route) {
         switch route {
         case .deviceInfo(let device):
-            rootController?.present(deviceInfo(device), animated: true)
-        case .deviceInfoDismiss(let device):
-            deviceInfo(device).dismiss(animated: true)
+            rootController?.present(deviceInfo(device), animated: false)
+        case .deviceInfoDismiss:
+            rootController?.dismiss(animated: false)
         }
     }
     
@@ -48,7 +48,7 @@ final class MainCoordinator: Coordinator {
     private func deviceInfo(_ device: Device) -> DeviceInfoViewController {
         let output = DeviceInfoFactory.Output(
             close: Command { [weak self] in
-                self?.route(.deviceInfoDismiss(device))
+                self?.route(.deviceInfoDismiss)
             }
         )
         return DeviceInfoFactory().default(output, device: device)
