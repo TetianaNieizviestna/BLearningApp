@@ -16,6 +16,7 @@ final class MainViewController: UIViewController {
             case failure(String)
         }
         
+        let bleManager: CBCentralManager
         let status: String
         let items: [DeviceTableViewCell.Props]
         
@@ -30,6 +31,7 @@ final class MainViewController: UIViewController {
         
         static let initial: Props = .init(
             state: .initial,
+            bleManager: CBCentralManager(),
             status: "",
             items: [],
             devices: [],
@@ -52,12 +54,15 @@ final class MainViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
-        bleManager = CBCentralManager(delegate: self, queue: nil, options: nil)
+//        bleManager = CBCentralManager(delegate: self, queue: nil, options: nil)
         activityIndicator.hidesWhenStopped = true
     }
 
     func render(_ props: Props) {
         self.props = props
+        bleManager = props.bleManager
+        bleManager?.delegate = self
+        
         switch self.props.state {
         case .initial:
             setScanning(false)

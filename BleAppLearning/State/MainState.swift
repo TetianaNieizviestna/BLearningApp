@@ -13,9 +13,8 @@ extension MainState.MainScreenState: Equatable {}
 struct MainState {
     static let initial = MainState(
         state: .initial,
-        bleState: "",
         devices: []
-        )
+    )
     
     var state: MainScreenState; enum MainScreenState {
         case initial
@@ -23,16 +22,13 @@ struct MainState {
         case failure(String)
     }
     
-    var bleState: String
     var devices: [Device] = []
     
     init(
         state: MainScreenState,
-        bleState: String,
         devices: [Device]
     ) {
         self.state = state
-        self.bleState = bleState
         self.devices = devices
     }
 }
@@ -51,32 +47,31 @@ func reduce(_ state: MainState, _ action: Action) -> MainState {
         }
         return .init(
             state: state.state,
-            bleState: state.bleState,
             devices: newDevices
         )
     case let action as MainFailureAction:
         return .init(
             state: .failure(action.error),
-            bleState: state.bleState,
-            devices: state.devices
-        )
-    case let action as BLEStateAction:
-        return .init(
-            state: .initial,
-            bleState: action.name,
             devices: state.devices
         )
     case is ScanStartAction:
         return .init(
             state: .scanning,
-            bleState: state.bleState,
             devices: state.devices
         )
     case is ScanStopAction:
         return .init(
             state: .initial,
-            bleState: state.bleState,
             devices: state.devices
+        )
+    case let action as DeviceChangeStateAction:
+        var newDevices = state.devices
+        if let firstIndex = newDevices.firstIndex(where: { $0.identifier == action.device.identifier }) {
+            newDevices[firstIndex] = action.device
+        }
+        return .init(
+            state: state.state,
+            devices: newDevices
         )
     default:
         return state

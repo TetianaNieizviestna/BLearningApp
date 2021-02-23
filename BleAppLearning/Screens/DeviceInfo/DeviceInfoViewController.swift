@@ -15,7 +15,7 @@ final class DeviceInfoViewController: UIViewController {
             case loading
             case failure(String)
         }
-        
+        let bleManager: CBCentralManager
         let device: Device?
         let title: String
         let items: [ServiceTableViewCell.Props]
@@ -29,6 +29,7 @@ final class DeviceInfoViewController: UIViewController {
         
         static let initial: Props = .init(
             state: .initial,
+            bleManager: CBCentralManager(),
             device: nil,
             title: "",
             items: [],
@@ -55,15 +56,15 @@ final class DeviceInfoViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
-        bleManager = CBCentralManager(delegate: self, queue: nil, options: nil)
-        bleManager?.delegate = self
+//        bleManager = CBCentralManager(delegate: self, queue: nil, options: nil)
     }
     
     func render(_ props: Props) {
         self.props = props
+        bleManager = props.bleManager
+        bleManager?.delegate = self
 
         titleLabel.text = props.title
-        self.props.device?.delegate = self
         setConnectBtn()
         switch self.props.device?.state {
         case .connected:
@@ -76,12 +77,11 @@ final class DeviceInfoViewController: UIViewController {
             activityIndicator.startAnimating()
             stateImageView.isHidden = true
         }
+        servicesTableView.reloadData()
         self.view.setNeedsLayout()
     }
     
     private func setupUI() {
-        bleManager?.delegate = self
-        
         servicesTableView.setDataSource(self, delegate: self)
         servicesTableView.register([ServiceTableViewCell.identifier])
         servicesTableView.tableFooterView = UIView(frame: .zero)
@@ -97,42 +97,34 @@ final class DeviceInfoViewController: UIViewController {
             case .connected:
                 title = "Disconnect"
                 color = UIColor.systemGreen
-                connectBtn.isEnabled = true
             case .disconnected:
                 title = "Connect"
                 color = UIColor.systemGreen
-                connectBtn.isEnabled = true
             case .connecting:
                 title = "Connecting..."
                 color = UIColor.systemGray
-                connectBtn.isEnabled = false
             case .disconnecting:
                 title = "Disconnecting..."
                 color = UIColor.systemGray
-                connectBtn.isEnabled = false
             @unknown default:
                 break
             }
         }
 
         connectBtn.setTitle(title, for: .normal)
-        connectBtn.setTitle(title, for: .focused)
-        connectBtn.setTitle(title, for: .highlighted)
-
         connectBtn.setTitleColor(color, for: .normal)
-        connectBtn.setTitleColor(color, for: .focused)
-        connectBtn.setTitleColor(color, for: .highlighted)
     }
     
     private func changeDeviceConnection() {
         guard let device = props.device else { return }
         switch device.state {
         case .disconnected:
-            bleManager?.connect(device, options: nil)
+            bleManager?.connect(device)
+            device.delegate = self
         case .connected:
             bleManager?.cancelPeripheralConnection(device)
         default:
-            break
+            bleManager?.cancelPeripheralConnection(device)
         }
     }
     
@@ -179,57 +171,52 @@ extension DeviceInfoViewController: CBCentralManagerDelegate {
     }
     
     func centralManager(_ central: CBCentralManager, didFailToConnect peripheral: CBPeripheral, error: Error?) {
-        if props.device?.identifier == peripheral.identifier {
-            handleError(source: "DeviceInfoViewController.didFailToConnect", error: error, completion: nil)
-        }
+        handleError(source: "didFailToConnect", error: error, completion: nil)
     }
 }
 
 extension DeviceInfoViewController: CBPeripheralDelegate {
     func peripheral(_ peripheral: CBPeripheral, didDiscoverServices error: Error?) {
         if props.device?.identifier == peripheral.identifier {
-            handleError(source: "peripheral.didDiscoverServices", error: error) {
+            handleError(source: "didDiscoverServices", error: error) {
                 self.props.servicesFound.perform(with: peripheral.services ?? [])
-//                self.services = peripheral.services ?? []
-//                self.services.forEach { service in
-//                    peripheral.discoverCharacteristics(nil, for: service)
-//                }
+                self.props.services.forEach { service in
+                    peripheral.discoverCharacteristics(nil, for: service)
+                }
             }
         }
     }
     
     func peripheral(_ peripheral: CBPeripheral, didDiscoverCharacteristicsFor service: CBService, error: Error?) {
-        handleError(source: "peripheral.didDiscoverCharacteristicsFor", error: error) {
-//            service.characteristics?.forEach({
-//                if !self.characteristics.contains($0) {
-//                    self.characteristics.append($0)
-//                    peripheral.readValue(for: $0)
-//
-//                    Printer.printData($0.value)
-//                }
-//            })
+        handleError(source: "didDiscoverCharacteristicsFor", error: error) {
+            service.characteristics?.forEach({
+                peripheral.readValue(for: $0)
+                Printer.printData($0.value)
+            })
         }
     }
     
     func peripheral(_ peripheral: CBPeripheral, didUpdateValueFor characteristic: CBCharacteristic, error: Error?) {
-        handleError(source: "peripheral.didUpdateValueFor", error: error) {
-            print("Characteristic value updated! \(characteristic.description)")
-        }
+//        handleError(source: "didUpdateValueFor", error: error) {
+//            print("Characteristic value updated! \(characteristic.description)")
+//        }
     }
 }
 
 extension DeviceInfoViewController: UITableViewDelegate {
-    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        props.items[indexPath.row].onSelect.perform()
+    }
 }
 
 extension DeviceInfoViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return props.device?.services?.count ?? 0
+        return props.items.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cellProps = props.items[indexPath.row]
         guard let cell = tableView.dequeueReusableCell(withIdentifier: ServiceTableViewCell.identifier) as? ServiceTableViewCell else { return UITableViewCell() }
+        let cellProps = props.items[indexPath.row]
         cell.render(cellProps)
         return cell
     }

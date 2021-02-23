@@ -20,6 +20,7 @@ struct DeviceInfoPresenter {
         render.perform(
             with: .init(
                 state:  getState(state),
+                bleManager: state.bleState.manager,
                 device: device,
                 title: device.name ?? "no name",
                 items: getItems(state),

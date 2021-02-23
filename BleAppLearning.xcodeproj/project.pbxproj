@@ -13,6 +13,7 @@
 		AB95702725E4F8B700737F0A /* DeviceInfoState.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB95702625E4F8B700737F0A /* DeviceInfoState.swift */; };
 		AB95702C25E502B100737F0A /* ServiceTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB95702A25E502B100737F0A /* ServiceTableViewCell.swift */; };
 		AB95702D25E502B100737F0A /* ServiceTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AB95702B25E502B100737F0A /* ServiceTableViewCell.xib */; };
+		AB95703025E54FE300737F0A /* BLEState.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB95702F25E54FE300737F0A /* BLEState.swift */; };
 		ABACDEAB25E14C77003F5B0B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABACDEAA25E14C77003F5B0B /* AppDelegate.swift */; };
 		ABACDEAF25E14C77003F5B0B /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABACDEAE25E14C77003F5B0B /* MainViewController.swift */; };
 		ABACDEB225E14C77003F5B0B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ABACDEB025E14C77003F5B0B /* Main.storyboard */; };
@@ -55,6 +56,7 @@
 		AB95702625E4F8B700737F0A /* DeviceInfoState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceInfoState.swift; sourceTree = "<group>"; };
 		AB95702A25E502B100737F0A /* ServiceTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceTableViewCell.swift; sourceTree = "<group>"; };
 		AB95702B25E502B100737F0A /* ServiceTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ServiceTableViewCell.xib; sourceTree = "<group>"; };
+		AB95702F25E54FE300737F0A /* BLEState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BLEState.swift; sourceTree = "<group>"; };
 		ABACDEA725E14C77003F5B0B /* BleAppLearning.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BleAppLearning.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		ABACDEAA25E14C77003F5B0B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		ABACDEAE25E14C77003F5B0B /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
@@ -267,6 +269,7 @@
 				ABACDF4D25E28558003F5B0B /* AppState.swift */,
 				ABACDF5525E28E98003F5B0B /* MainState.swift */,
 				AB95702625E4F8B700737F0A /* DeviceInfoState.swift */,
+				AB95702F25E54FE300737F0A /* BLEState.swift */,
 			);
 			path = State;
 			sourceTree = "<group>";
@@ -417,6 +420,7 @@
 				ABACDF1925E25986003F5B0B /* CBManagerState.swift in Sources */,
 				ABACDEAF25E14C77003F5B0B /* MainViewController.swift in Sources */,
 				ABACDF2825E27042003F5B0B /* DeviceInfoViewController.swift in Sources */,
+				AB95703025E54FE300737F0A /* BLEState.swift in Sources */,
 				ABACDF5625E28E98003F5B0B /* MainState.swift in Sources */,
 				ABACDF4A25E27F3B003F5B0B /* UIStoryboard.swift in Sources */,
 				ABACDEAB25E14C77003F5B0B /* AppDelegate.swift in Sources */,

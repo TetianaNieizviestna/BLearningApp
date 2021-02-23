@@ -35,20 +35,6 @@ class ServiceTableViewCell: UITableViewCell {
         self.props = props
         nameLabel.text = props.title
         idLabel.text = props.id
-//        activityIndicator.hidesWhenStopped = true
-//
-//        stateImageView.isHidden = props.state != .connected
-//
-//        switch props.state {
-//        case .connected:
-//            activityIndicator.stopAnimating()
-//        case .connecting, .disconnecting:
-//            activityIndicator.startAnimating()
-//        case .disconnected:
-//            activityIndicator.stopAnimating()
-//        @unknown default:
-//            activityIndicator.stopAnimating()
-//        }
     }
 
 }
