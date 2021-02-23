@@ -56,7 +56,6 @@ final class DeviceInfoViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
-//        bleManager = CBCentralManager(delegate: self, queue: nil, options: nil)
     }
     
     func render(_ props: Props) {

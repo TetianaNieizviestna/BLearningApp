@@ -11,24 +11,21 @@
         <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="ServiceTableViewCell" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" id="aeU-Tx-4NJ" customClass="ServiceTableViewCell" customModule="BleAppLearning" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="384" height="55.5"/>
             <autoresizingMask key="autoresizingMask"/>
-            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" ambiguous="YES" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="aeU-Tx-4NJ" id="Dcm-RT-MLU">
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="aeU-Tx-4NJ" id="Dcm-RT-MLU">
                 <rect key="frame" x="0.0" y="0.0" width="384" height="55.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1. Name" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1us-on-Rjn">
-                        <rect key="frame" x="5" y="5" width="374" height="20"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1. Name" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1us-on-Rjn">
+                        <rect key="frame" x="5" y="5" width="374" height="40"/>
                         <constraints>
-                            <constraint firstAttribute="height" constant="20" id="H2S-Kh-adK"/>
+                            <constraint firstAttribute="height" constant="40" id="tzQ-1c-0wy"/>
                         </constraints>
                         <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7aS-Oa-3Qm">
-                        <rect key="frame" x="5" y="30" width="374" height="20"/>
-                        <constraints>
-                            <constraint firstAttribute="height" constant="20" id="Yq1-eY-BkB"/>
-                        </constraints>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7aS-Oa-3Qm">
+                        <rect key="frame" x="5" y="50" width="374" height="0.5"/>
                         <fontDescription key="fontDescription" type="system" pointSize="13"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>

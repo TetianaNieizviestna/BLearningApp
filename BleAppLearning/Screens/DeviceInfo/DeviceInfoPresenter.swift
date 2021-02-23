@@ -50,9 +50,11 @@ struct DeviceInfoPresenter {
     }
     
     private func getItem(_ service: BTService) -> ServiceTableViewCell.Props {
+        let included = service.includedServices.map { "\($0.description)\n" } ?? ""
+        let str = "\(included)"
         return ServiceTableViewCell.Props(
-            title: service.description,
-            id: "\(service.uuid)",
+            title: "\(service.uuid)",
+            id: "\(str)",
             onSelect: Command {
                 self.onService.perform(with: service)
             }
