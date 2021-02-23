@@ -9,3 +9,4 @@ import CoreBluetooth
 
 typealias DeviceState = CBPeripheralState
 typealias Device = CBPeripheral
+typealias BTService = CBService

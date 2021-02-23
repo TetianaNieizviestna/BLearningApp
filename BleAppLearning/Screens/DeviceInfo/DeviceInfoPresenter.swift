@@ -12,21 +12,60 @@ struct DeviceInfoPresenter {
     
     let render: CommandWith<Props>
     let dispatch: CommandWith<Action>
+    let onService: CommandWith<BTService>
     let onClose: Command
     let endObserving: Command
     
     func present(state: AppState, device: Device) {
         render.perform(
             with: .init(
-                title: device.name ?? "no name",
                 state:  getState(state),
+                device: device,
+                title: device.name ?? "no name",
+                items: getItems(state),
+                services: getServices(state),
+                changeBleStatus: CommandWith { status in
+                    dispatch.perform(with: BLEStateAction(name: status))
+                },
+                changeState: CommandWith { device in
+                    dispatch.perform(with: DeviceChangeStateAction(device: device))
+                },
+                servicesFound: CommandWith { services in
+                    dispatch.perform(with: ServicesFoundAction(services: services))
+                },
                 onClose: onClose,
                 onDestroy: endObserving
             )
         )
     }
     
+    private func getServices(_ state: AppState) -> [BTService] {
+        return state.deviceInfo.services
+    }
+    
+    private func getItems(_ state: AppState) -> [ServiceTableViewCell.Props] {
+        let services = state.deviceInfo.services
+        return services.map { getItem($0) }
+    }
+    
+    private func getItem(_ service: BTService) -> ServiceTableViewCell.Props {
+        return ServiceTableViewCell.Props(
+            title: service.description,
+            id: "\(service.uuid)",
+            onSelect: Command {
+                self.onService.perform(with: service)
+            }
+        )
+    }
+    
     private func getState(_ state: AppState) -> Props.State {
-        return .initial
+        switch state.deviceInfo.state {
+        case .initial:
+            return .initial
+        case .loading:
+            return .loading
+        case .failure(let error):
+            return .failure(error)
+        }
     }
 }

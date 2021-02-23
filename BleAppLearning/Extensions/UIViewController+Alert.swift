@@ -17,4 +17,17 @@ extension UIViewController {
         alertVC.addAction(okay)
         self.present(alertVC, animated: true, completion: nil)
     }
+    
+    func handleError(source: String, error: Error?, completion: (() -> Void)?) {
+        if let error = error {
+            var message = error.localizedDescription
+            #if DEBUG
+            message = "\(self.self).\(source): \(error.localizedDescription)"
+            #endif
+            print("[ERROR]: \(message)")
+            showAlert(title: "Error!", message: message)
+        } else {
+            completion?()
+        }
+    }
 }

@@ -21,16 +21,15 @@ struct MainPresenter {
                 status: getStatus(state),
                 items: getItems(state),
                 devices: state.main.devices,
-                connectedDevices: state.main.connectedDevices,
-                currentDevice: state.main.currentDevice,
+                scanAction: Command {
+                    if state.main.state == .scanning {
+                        dispatch.perform(with: ScanStopAction())
+                    } else {
+                        dispatch.perform(with: ScanStartAction())
+                    }
+                },
                 foundDevice: CommandWith { device in
                     dispatch.perform(with: DeviceFoundAction(device: device))
-                },
-                connectDevice: CommandWith { device in
-                    dispatch.perform(with: DeviceConnectedAction(device: device))
-                },
-                disconnectDevice: CommandWith { device in
-                    dispatch.perform(with: DeviceDisconnectedAction(device: device))
                 },
                 changeState: CommandWith { device in
                     dispatch.perform(with: DeviceChangeStateAction(device: device))
@@ -44,7 +43,14 @@ struct MainPresenter {
     }
     
     private func getState(_ state: AppState) -> Props.State {
-        return .initial
+        switch state.main.state {
+        case .initial:
+            return .initial
+        case .scanning:
+            return .scanning
+        case .failure(let error):
+            return .failure(error)
+        }
     }
     
     private func getStatus(_ state: AppState) -> String {
@@ -53,8 +59,7 @@ struct MainPresenter {
     
     private func getItems(_ state: AppState) -> [DeviceTableViewCell.Props] {
         let devices = state.main.devices
-        let props = devices.map { getItem(from: $0) }
-        return props
+        return devices.map { getItem(from: $0) }
     }
     
     private func getItem(from device: Device) -> DeviceTableViewCell.Props {
@@ -63,6 +68,7 @@ struct MainPresenter {
             id: "\(device.identifier)",
             state: device.state,
             onSelect: Command {
+                dispatch.perform(with: ScanStopAction())
                 self.onDevice.perform(with: device)
             }
         )

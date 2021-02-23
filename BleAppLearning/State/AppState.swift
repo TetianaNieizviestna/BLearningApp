@@ -11,11 +11,14 @@ struct AppState {
     static let initial = AppState()
 
     let main: MainState
-
+    let deviceInfo: DeviceInfoState
+    
     init(
-        main: MainState = .initial
+        main: MainState = .initial,
+        deviceInfo: DeviceInfoState = .initial
     ) {
         self.main = main
+        self.deviceInfo = deviceInfo
     }
 }
 
@@ -25,7 +28,8 @@ func reduce(_ state: AppState, _ action: Action) -> AppState {
         return .initial
     default:
         return .init(
-            main: reduce(state.main, action)
+            main: reduce(state.main, action),
+            deviceInfo: reduce(state.deviceInfo, action)
         )
     }
 }

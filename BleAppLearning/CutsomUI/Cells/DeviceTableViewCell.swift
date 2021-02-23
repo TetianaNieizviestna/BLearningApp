@@ -33,6 +33,7 @@ class DeviceTableViewCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
+        
     }
     
     func render(_ props: Props) {

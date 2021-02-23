@@ -16,119 +16,64 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Data1" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MNR-46-7U2">
-                                <rect key="frame" x="15" y="59" width="384" height="25"/>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="sFP-84-aDQ">
+                                <rect key="frame" x="359" y="51.5" width="40" height="40"/>
+                                <color key="tintColor" systemColor="systemOrangeColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="sFP-84-aDQ" secondAttribute="height" multiplier="1:1" id="QZz-Om-iP3"/>
+                                    <constraint firstAttribute="height" constant="40" id="TIx-kH-W2s"/>
+                                </constraints>
+                            </activityIndicatorView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Bluetooth: On" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MNR-46-7U2">
+                                <rect key="frame" x="15" y="59" width="339" height="25"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="25" id="gPd-eL-gCR"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="s7P-9O-sCZ">
-                                <rect key="frame" x="15" y="99" width="384" height="25"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="25" id="Puu-jo-bRF"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wzq-En-Oxs">
-                                <rect key="frame" x="15" y="124" width="384" height="0.0"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BE7-dQ-dH5">
-                                <rect key="frame" x="15" y="124" width="384" height="0.0"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XPe-gL-O9G">
-                                <rect key="frame" x="15" y="124" width="384" height="0.0"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="lmH-gQ-fxG">
-                                <rect key="frame" x="15" y="124" width="384" height="658"/>
+                                <rect key="frame" x="15" y="89" width="384" height="713"/>
                                 <color key="separatorColor" systemColor="systemGray4Color"/>
                                 <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                             </tableView>
-                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="bQY-Gy-X87">
-                                <rect key="frame" x="15" y="797" width="384" height="50"/>
-                                <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Muk-gQ-gqV">
-                                        <rect key="frame" x="0.0" y="0.0" width="128" height="50"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                        <state key="normal" title="Scan Devices">
-                                            <color key="titleColor" systemColor="systemPurpleColor"/>
-                                        </state>
-                                        <connections>
-                                            <action selector="startScanBtnAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Svh-Bs-LPm"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="N0z-Xk-zjJ">
-                                        <rect key="frame" x="128" y="0.0" width="128" height="50"/>
-                                        <state key="normal" title="Services"/>
-                                        <connections>
-                                            <action selector="servicesBtnAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="5Qv-eh-Sep"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hKh-0Z-Jab">
-                                        <rect key="frame" x="256" y="0.0" width="128" height="50"/>
-                                        <state key="normal" title="Stop Scan">
-                                            <color key="titleColor" systemColor="systemOrangeColor"/>
-                                        </state>
-                                        <connections>
-                                            <action selector="stopScanBtnAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="WBW-Ug-rnz"/>
-                                        </connections>
-                                    </button>
-                                </subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Muk-gQ-gqV">
+                                <rect key="frame" x="15" y="807" width="384" height="50"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="50" id="qHs-u3-xbk"/>
+                                    <constraint firstAttribute="height" constant="50" id="ADw-E3-c6P"/>
                                 </constraints>
-                            </stackView>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <state key="normal" title="Scan Devices">
+                                    <color key="titleColor" systemColor="systemPurpleColor"/>
+                                </state>
+                                <connections>
+                                    <action selector="startScanBtnAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Svh-Bs-LPm"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="XPe-gL-O9G" firstAttribute="trailing" secondItem="BE7-dQ-dH5" secondAttribute="trailing" id="1LD-Qn-l7W"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="MNR-46-7U2" secondAttribute="trailing" constant="15" id="2wu-sZ-ZRa"/>
-                            <constraint firstItem="bQY-Gy-X87" firstAttribute="top" secondItem="lmH-gQ-fxG" secondAttribute="bottom" constant="15" id="6cq-AD-QxX"/>
-                            <constraint firstItem="wzq-En-Oxs" firstAttribute="trailing" secondItem="s7P-9O-sCZ" secondAttribute="trailing" id="G2B-GQ-TUL"/>
-                            <constraint firstItem="lmH-gQ-fxG" firstAttribute="trailing" secondItem="XPe-gL-O9G" secondAttribute="trailing" id="Gbc-sL-rmZ"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="bQY-Gy-X87" secondAttribute="trailing" constant="15" id="Gs1-UU-S1c"/>
-                            <constraint firstItem="BE7-dQ-dH5" firstAttribute="leading" secondItem="wzq-En-Oxs" secondAttribute="leading" id="KYm-nT-Gz3"/>
-                            <constraint firstItem="bQY-Gy-X87" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="15" id="N7a-WK-d1S"/>
-                            <constraint firstItem="lmH-gQ-fxG" firstAttribute="top" secondItem="XPe-gL-O9G" secondAttribute="bottom" id="OPN-L5-WmY"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="bQY-Gy-X87" secondAttribute="bottom" constant="15" id="UgT-y0-RQQ"/>
-                            <constraint firstItem="BE7-dQ-dH5" firstAttribute="trailing" secondItem="wzq-En-Oxs" secondAttribute="trailing" id="W4N-H5-YIk"/>
-                            <constraint firstItem="BE7-dQ-dH5" firstAttribute="top" secondItem="wzq-En-Oxs" secondAttribute="bottom" id="WoP-4A-s82"/>
-                            <constraint firstItem="XPe-gL-O9G" firstAttribute="leading" secondItem="BE7-dQ-dH5" secondAttribute="leading" id="ZmD-4H-7Ff"/>
-                            <constraint firstItem="lmH-gQ-fxG" firstAttribute="leading" secondItem="XPe-gL-O9G" secondAttribute="leading" id="e0c-eM-S8u"/>
-                            <constraint firstItem="XPe-gL-O9G" firstAttribute="top" secondItem="BE7-dQ-dH5" secondAttribute="bottom" id="fvj-9e-9ot"/>
-                            <constraint firstItem="wzq-En-Oxs" firstAttribute="top" secondItem="s7P-9O-sCZ" secondAttribute="bottom" id="kXG-TG-xbo"/>
-                            <constraint firstItem="s7P-9O-sCZ" firstAttribute="top" secondItem="MNR-46-7U2" secondAttribute="bottom" constant="15" id="kiy-ay-HxG"/>
-                            <constraint firstItem="s7P-9O-sCZ" firstAttribute="trailing" secondItem="MNR-46-7U2" secondAttribute="trailing" id="lbh-Gw-zX2"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="sFP-84-aDQ" secondAttribute="trailing" constant="15" id="2Mm-AN-bp4"/>
+                            <constraint firstItem="lmH-gQ-fxG" firstAttribute="leading" secondItem="MNR-46-7U2" secondAttribute="leading" id="66o-mG-Fqq"/>
+                            <constraint firstItem="Muk-gQ-gqV" firstAttribute="leading" secondItem="lmH-gQ-fxG" secondAttribute="leading" id="IZX-NI-0Pm"/>
+                            <constraint firstItem="Muk-gQ-gqV" firstAttribute="top" secondItem="lmH-gQ-fxG" secondAttribute="bottom" constant="5" id="cWi-WA-Jiz"/>
+                            <constraint firstItem="Muk-gQ-gqV" firstAttribute="trailing" secondItem="lmH-gQ-fxG" secondAttribute="trailing" id="cew-lY-y6a"/>
+                            <constraint firstItem="Muk-gQ-gqV" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" constant="-5" id="gBc-Na-gyz"/>
+                            <constraint firstItem="sFP-84-aDQ" firstAttribute="leading" secondItem="MNR-46-7U2" secondAttribute="trailing" constant="5" id="gb8-kp-7Hm"/>
+                            <constraint firstItem="lmH-gQ-fxG" firstAttribute="top" secondItem="MNR-46-7U2" secondAttribute="bottom" constant="5" id="kwb-yx-DCI"/>
                             <constraint firstItem="MNR-46-7U2" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="15" id="mxY-aa-Iv1"/>
-                            <constraint firstItem="s7P-9O-sCZ" firstAttribute="leading" secondItem="MNR-46-7U2" secondAttribute="leading" id="nJW-Bn-rYj"/>
-                            <constraint firstItem="wzq-En-Oxs" firstAttribute="leading" secondItem="s7P-9O-sCZ" secondAttribute="leading" id="r05-IZ-rJ6"/>
+                            <constraint firstItem="lmH-gQ-fxG" firstAttribute="trailing" secondItem="sFP-84-aDQ" secondAttribute="trailing" id="rRa-LG-cmR"/>
                             <constraint firstItem="MNR-46-7U2" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="15" id="vcl-sx-KWF"/>
+                            <constraint firstItem="sFP-84-aDQ" firstAttribute="centerY" secondItem="MNR-46-7U2" secondAttribute="centerY" id="yyQ-to-pLH"/>
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="data3Label" destination="wzq-En-Oxs" id="cgb-nf-gfm"/>
-                        <outlet property="data4Label" destination="BE7-dQ-dH5" id="fr3-Jf-uQI"/>
-                        <outlet property="data5Label" destination="XPe-gL-O9G" id="XdU-cM-KiS"/>
-                        <outlet property="deviceNameLabel" destination="s7P-9O-sCZ" id="fqr-iR-B3v"/>
+                        <outlet property="activityIndicator" destination="sFP-84-aDQ" id="op0-DR-KXH"/>
                         <outlet property="devicesListTableView" destination="lmH-gQ-fxG" id="HrV-kc-ltA"/>
-                        <outlet property="servicesBtn" destination="N0z-Xk-zjJ" id="3zT-Md-LKm"/>
-                        <outlet property="startScanBtn" destination="Muk-gQ-gqV" id="5qn-mG-f3H"/>
+                        <outlet property="scanBtn" destination="Muk-gQ-gqV" id="5qn-mG-f3H"/>
                         <outlet property="stateLabel" destination="MNR-46-7U2" id="wh6-vb-gnJ"/>
-                        <outlet property="stopScanBtn" destination="hKh-0Z-Jab" id="Zle-zj-AQQ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

@@ -40,6 +40,10 @@ final class DeviceInfoFactory {
         let presenter = DeviceInfoPresenter(
             render: render.dispatched(on: .main),
             dispatch: dispatcher,
+            onService: CommandWith { service in
+                // TODO: Open Service Info
+//                output.serviceInfo.perform()
+            },
             onClose: Command {
                 output.close.perform()
             },

@@ -9,6 +9,10 @@
 /* Begin PBXBuildFile section */
 		50D5086ED5390DE442082151 /* Pods_BleAppLearning.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B2C0F021ABA36A74400929AB /* Pods_BleAppLearning.framework */; };
 		AB95701925E4077700737F0A /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB95701825E4077700737F0A /* Logger.swift */; };
+		AB95702425E4F0EA00737F0A /* UserKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB95702325E4F0EA00737F0A /* UserKeys.swift */; };
+		AB95702725E4F8B700737F0A /* DeviceInfoState.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB95702625E4F8B700737F0A /* DeviceInfoState.swift */; };
+		AB95702C25E502B100737F0A /* ServiceTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB95702A25E502B100737F0A /* ServiceTableViewCell.swift */; };
+		AB95702D25E502B100737F0A /* ServiceTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AB95702B25E502B100737F0A /* ServiceTableViewCell.xib */; };
 		ABACDEAB25E14C77003F5B0B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABACDEAA25E14C77003F5B0B /* AppDelegate.swift */; };
 		ABACDEAF25E14C77003F5B0B /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABACDEAE25E14C77003F5B0B /* MainViewController.swift */; };
 		ABACDEB225E14C77003F5B0B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ABACDEB025E14C77003F5B0B /* Main.storyboard */; };
@@ -47,6 +51,10 @@
 		34071AF668234CD11E881C3B /* Pods-BleAppLearning.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BleAppLearning.debug.xcconfig"; path = "Target Support Files/Pods-BleAppLearning/Pods-BleAppLearning.debug.xcconfig"; sourceTree = "<group>"; };
 		41AC48F4227DFDC615D49347 /* Pods-BleAppLearning.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BleAppLearning.release.xcconfig"; path = "Target Support Files/Pods-BleAppLearning/Pods-BleAppLearning.release.xcconfig"; sourceTree = "<group>"; };
 		AB95701825E4077700737F0A /* Logger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Logger.swift; sourceTree = "<group>"; };
+		AB95702325E4F0EA00737F0A /* UserKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserKeys.swift; sourceTree = "<group>"; };
+		AB95702625E4F8B700737F0A /* DeviceInfoState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceInfoState.swift; sourceTree = "<group>"; };
+		AB95702A25E502B100737F0A /* ServiceTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceTableViewCell.swift; sourceTree = "<group>"; };
+		AB95702B25E502B100737F0A /* ServiceTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ServiceTableViewCell.xib; sourceTree = "<group>"; };
 		ABACDEA725E14C77003F5B0B /* BleAppLearning.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BleAppLearning.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		ABACDEAA25E14C77003F5B0B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		ABACDEAE25E14C77003F5B0B /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
@@ -113,6 +121,14 @@
 			path = Middlewares;
 			sourceTree = "<group>";
 		};
+		AB95702925E5028E00737F0A /* CutsomUI */ = {
+			isa = PBXGroup;
+			children = (
+				ABACDEC725E16CDE003F5B0B /* Cells */,
+			);
+			path = CutsomUI;
+			sourceTree = "<group>";
+		};
 		ABACDE9E25E14C77003F5B0B = {
 			isa = PBXGroup;
 			children = (
@@ -134,6 +150,7 @@
 		ABACDEA925E14C77003F5B0B /* BleAppLearning */ = {
 			isa = PBXGroup;
 			children = (
+				AB95702925E5028E00737F0A /* CutsomUI */,
 				AB95701725E4076A00737F0A /* Middlewares */,
 				ABACDF5025E28E61003F5B0B /* Action */,
 				ABACDF4C25E2854E003F5B0B /* State */,
@@ -142,7 +159,6 @@
 				ABACDF1D25E26E24003F5B0B /* Helpers */,
 				ABACDEE425E16F1B003F5B0B /* Extensions */,
 				ABACDEE925E17563003F5B0B /* Screens */,
-				ABACDEC725E16CDE003F5B0B /* Cells */,
 				ABACDEAA25E14C77003F5B0B /* AppDelegate.swift */,
 				ABACDF3425E27874003F5B0B /* AppCoordinator.swift */,
 				ABACDEB325E14C78003F5B0B /* Assets.xcassets */,
@@ -158,6 +174,8 @@
 			children = (
 				ABACDECC25E16D1D003F5B0B /* DeviceTableViewCell.swift */,
 				ABACDECD25E16D1D003F5B0B /* DeviceTableViewCell.xib */,
+				AB95702A25E502B100737F0A /* ServiceTableViewCell.swift */,
+				AB95702B25E502B100737F0A /* ServiceTableViewCell.xib */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -238,6 +256,7 @@
 				ABACDF4025E27E16003F5B0B /* Coordinator.swift */,
 				ABACDF4325E27E33003F5B0B /* Router.swift */,
 				ABACDF6225E2AA73003F5B0B /* CBBridging.swift */,
+				AB95702325E4F0EA00737F0A /* UserKeys.swift */,
 			);
 			path = Abstractions;
 			sourceTree = "<group>";
@@ -247,6 +266,7 @@
 			children = (
 				ABACDF4D25E28558003F5B0B /* AppState.swift */,
 				ABACDF5525E28E98003F5B0B /* MainState.swift */,
+				AB95702625E4F8B700737F0A /* DeviceInfoState.swift */,
 			);
 			path = State;
 			sourceTree = "<group>";
@@ -333,6 +353,7 @@
 				ABACDEB425E14C78003F5B0B /* Assets.xcassets in Resources */,
 				ABACDEB225E14C77003F5B0B /* Main.storyboard in Resources */,
 				ABACDECF25E16D1D003F5B0B /* DeviceTableViewCell.xib in Resources */,
+				AB95702D25E502B100737F0A /* ServiceTableViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -392,6 +413,7 @@
 				AB95701925E4077700737F0A /* Logger.swift in Sources */,
 				ABACDF6925E2B04B003F5B0B /* MainPresenter.swift in Sources */,
 				ABACDF4125E27E16003F5B0B /* Coordinator.swift in Sources */,
+				AB95702C25E502B100737F0A /* ServiceTableViewCell.swift in Sources */,
 				ABACDF1925E25986003F5B0B /* CBManagerState.swift in Sources */,
 				ABACDEAF25E14C77003F5B0B /* MainViewController.swift in Sources */,
 				ABACDF2825E27042003F5B0B /* DeviceInfoViewController.swift in Sources */,
@@ -402,6 +424,7 @@
 				ABACDF3125E275AC003F5B0B /* SwiftyReduxBridging.swift in Sources */,
 				ABACDF4425E27E33003F5B0B /* Router.swift in Sources */,
 				ABACDF6F25E3D29A003F5B0B /* DeviceAction.swift in Sources */,
+				AB95702725E4F8B700737F0A /* DeviceInfoState.swift in Sources */,
 				ABACDEE625E16F2B003F5B0B /* UITableView.swift in Sources */,
 				ABACDF6325E2AA73003F5B0B /* CBBridging.swift in Sources */,
 				ABACDF1F25E26E31003F5B0B /* Printer.swift in Sources */,
@@ -409,6 +432,7 @@
 				ABACDF5925E2947A003F5B0B /* Functions.swift in Sources */,
 				ABACDEEF25E18045003F5B0B /* UIViewController+Alert.swift in Sources */,
 				ABACDF4725E27EC0003F5B0B /* DeviceInfoFactory.swift in Sources */,
+				AB95702425E4F0EA00737F0A /* UserKeys.swift in Sources */,
 				ABACDF3825E27A9C003F5B0B /* MainCoordinator.swift in Sources */,
 				ABACDF3E25E27D6E003F5B0B /* Command.swift in Sources */,
 				ABACDECE25E16D1D003F5B0B /* DeviceTableViewCell.swift in Sources */,

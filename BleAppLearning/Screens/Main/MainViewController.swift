@@ -13,20 +13,16 @@ final class MainViewController: UIViewController {
         let state: State; enum State {
             case initial
             case scanning
-            case failure(message: String)
+            case failure(String)
         }
         
         let status: String
         let items: [DeviceTableViewCell.Props]
         
         let devices: [Device]
-        let connectedDevices: [Device]
         
-        let currentDevice: Device?
-        
+        let scanAction: Command
         let foundDevice: CommandWith<Device>
-        let connectDevice: CommandWith<Device>
-        let disconnectDevice: CommandWith<Device>
         let changeState: CommandWith<Device>
         let changeBleStatus: CommandWith<String>
         
@@ -37,11 +33,8 @@ final class MainViewController: UIViewController {
             status: "",
             items: [],
             devices: [],
-            connectedDevices: [],
-            currentDevice: nil,
+            scanAction: .nop,
             foundDevice: .nop,
-            connectDevice: .nop,
-            disconnectDevice: .nop,
             changeState: .nop,
             changeBleStatus: .nop,
             onDestroy: .nop
@@ -51,111 +44,75 @@ final class MainViewController: UIViewController {
 
     var bleManager: CBCentralManager?
 
+    @IBOutlet private var activityIndicator: UIActivityIndicatorView!
     @IBOutlet private var stateLabel: UILabel!
-    @IBOutlet private var deviceNameLabel: UILabel!
-    @IBOutlet private var data3Label: UILabel!
-    @IBOutlet private var data4Label: UILabel!
-    @IBOutlet private var data5Label: UILabel!
-    
     @IBOutlet private var devicesListTableView: UITableView!
-    
-    @IBOutlet private var startScanBtn: UIButton!
-    @IBOutlet private var stopScanBtn: UIButton!
-    
-    @IBOutlet private var servicesBtn: UIButton!
-       
-    var services: [CBService] = []
-    var characteristics: [CBCharacteristic] = []
-
+    @IBOutlet private var scanBtn: UIButton!
+           
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
         bleManager = CBCentralManager(delegate: self, queue: nil, options: nil)
+        activityIndicator.hidesWhenStopped = true
     }
 
     func render(_ props: Props) {
         self.props = props
-        
-        props.currentDevice?.delegate = self
-        deviceNameLabel.text = props.currentDevice?.name ?? ""
+        switch self.props.state {
+        case .initial:
+            setScanning(false)
+        case .scanning:
+            setScanning(true)
+        case .failure(let error):
+            setScanning(false)
+            showAlert(title: "Error!", message: error)
+        }
         stateLabel.text = props.status
 
         devicesListTableView.reloadData()
         self.view.setNeedsLayout()
     }
     
+    private func setScanning(_ force: Bool) {
+        force ? activityIndicator.startAnimating() : activityIndicator.stopAnimating()
+        
+        let title = force ? "Stop" : "Start"
+        let color = force ? UIColor.systemOrange : UIColor.systemPurple
+        
+        scanBtn.setTitle(title, for: .normal)
+        scanBtn.setTitle(title, for: .highlighted)
+        scanBtn.setTitle(title, for: .focused)
+        scanBtn.setTitleColor(color, for: .normal)
+        scanBtn.setTitleColor(color, for: .highlighted)
+        scanBtn.setTitleColor(color, for: .focused)
+    }
+    
     @IBAction func startScanBtnAction(_ sender: UIButton) {
-        bleManager?.scanForPeripherals(withServices: nil, options: nil)
-        startScanBtn.isEnabled = false
-        stopScanBtn.isEnabled = true
-    }
-
-    @IBAction func stopScanBtnAction(_ sender: UIButton) {
-        stopScan()
-    }
-    
-    @IBAction func servicesBtnAction(_ sender: UIButton) {
-//        connectedDevice?.discoverServices(nil)
-        print("servicesBtnAction")
-    }
-    
-    private func stopScan() {
-        bleManager?.stopScan()
-        setDefaultBtnStates()
+        switch props.state {
+        case .scanning:
+            bleManager?.stopScan()
+        case .initial:
+            bleManager?.scanForPeripherals(withServices: nil, options: nil)
+        default:
+            bleManager?.stopScan()
+        }
+        props.scanAction.perform()
     }
     
     private func setupUI() {
-        startScanBtn.setTitle("Scan Devices...", for: .normal)
-        startScanBtn.setTitle("Scan Devices...", for: .highlighted)
-        startScanBtn.setTitle("Scan Devices...", for: .focused)
-        startScanBtn.setTitle("Scaning...", for: .disabled)
-        
-        startScanBtn.setTitleColor(UIColor.systemPurple, for: .normal)
-        startScanBtn.setTitleColor(UIColor.systemPurple, for: .highlighted)
-        startScanBtn.setTitleColor(UIColor.systemPurple, for: .focused)
-        startScanBtn.setTitleColor(UIColor.systemGray, for: .disabled)
-
-        stopScanBtn.setTitleColor(UIColor.systemOrange, for: .normal)
-        stopScanBtn.setTitleColor(UIColor.systemOrange, for: .highlighted)
-        stopScanBtn.setTitleColor(UIColor.systemOrange, for: .focused)
-
-        stopScanBtn.setTitleColor(UIColor.systemGray, for: .disabled)
-        setDefaultBtnStates()
         setupTableView()
     }
     
     private func setupTableView() {
         devicesListTableView.setDataSource(self, delegate: self)
         devicesListTableView.register([DeviceTableViewCell.identifier])
-    }
-    
-    private func changeDeviceConnection(_ index: Int) {
-        switch props.items[index].state {
-        case .disconnected:
-            bleManager?.connect(props.devices[index], options: nil)
-        case .connected:
-            bleManager?.cancelPeripheralConnection(props.devices[index])
-        default:
-            break
-        }
-    }
-    
-    private func setDefaultBtnStates() {
-        startScanBtn.isEnabled = true
-        stopScanBtn.isEnabled = false
-    }
-    
-    private func changeDeviceState(for device: CBPeripheral, error: Error? = nil) {
-        print("DEVICE \"\(device.name ?? "no name")\" state: \(device.state.name)")
-        handleError(source: "changeDeviceState", error: error) {
-            self.props.changeState.perform(with: device)
-        }
+        devicesListTableView.tableFooterView = UIView(frame: .zero)
     }
 }
 
 extension MainViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        changeDeviceConnection(indexPath.row)
+        bleManager?.stopScan()
         props.items[indexPath.row].onSelect.perform()
     }
 }
@@ -176,73 +133,13 @@ extension MainViewController: UITableViewDataSource {
 
 extension MainViewController: CBCentralManagerDelegate {
     func centralManagerDidUpdateState(_ central: CBCentralManager) {
+        if central.state != .poweredOn {
+            showAlert(title: "Error!", message: "Bluetooth is not powered on. State: \(central.state.name). Please turn on Bluetooth in settings of your device.")
+        }
         props.changeBleStatus.perform(with: central.state.name)
     }
 
     func centralManager(_ central: CBCentralManager, didDiscover peripheral: CBPeripheral, advertisementData: [String : Any], rssi RSSI: NSNumber) {
         props.foundDevice.perform(with: peripheral)
     }
-    
-    func centralManager(_ central: CBCentralManager, didConnect peripheral: CBPeripheral) {
-        stopScan()
-        changeDeviceState(for: peripheral)
-        self.props.connectDevice.perform(with: peripheral)
-    }
-    
-    func centralManager(_ central: CBCentralManager, didDisconnectPeripheral peripheral: CBPeripheral, error: Error?) {
-        changeDeviceState(for: peripheral, error: error)
-    }
-    
-    func centralManager(_ central: CBCentralManager, connectionEventDidOccur event: CBConnectionEvent, for peripheral: CBPeripheral) {
-        changeDeviceState(for: peripheral)
-    }
-    
-    func centralManager(_ central: CBCentralManager, didFailToConnect peripheral: CBPeripheral, error: Error?) {
-        changeDeviceState(for: peripheral, error: error)
-    }
-    
 }
-
-extension MainViewController: CBPeripheralDelegate {
-    func peripheral(_ peripheral: CBPeripheral, didDiscoverServices error: Error?) {
-        handleError(source: "peripheral.didDiscoverServices", error: error) {
-            self.services = peripheral.services ?? []
-            self.services.forEach { service in
-                peripheral.discoverCharacteristics(nil, for: service)
-            }
-        }
-    }
-    
-    func peripheral(_ peripheral: CBPeripheral, didDiscoverCharacteristicsFor service: CBService, error: Error?) {
-        handleError(source: "peripheral.didDiscoverCharacteristicsFor", error: error) {
-            service.characteristics?.forEach({
-                if !self.characteristics.contains($0) {
-                    self.characteristics.append($0)
-                    peripheral.readValue(for: $0)
-                    
-                    Printer.printData($0.value)
-                }
-            })
-        }
-    }
-    
-    func peripheral(_ peripheral: CBPeripheral, didUpdateValueFor characteristic: CBCharacteristic, error: Error?) {
-        handleError(source: "peripheral.didUpdateValueFor", error: error) {
-            print("Characteristic value updated! \(characteristic.description)")
-        }
-    }
-    
-    private func handleError(source: String, error: Error?, completion: (() -> Void)?) {
-        if let error = error {
-            var message = error.localizedDescription
-            #if DEBUG
-            message = "\(source): \(error.localizedDescription)"
-            #endif
-            print("[ERROR]: \(message)")
-            showAlert(title: "Error!", message: message)
-        } else {
-            completion?()
-        }
-    }
-}
-

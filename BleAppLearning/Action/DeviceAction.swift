@@ -7,14 +7,6 @@
 
 import Foundation
 
-struct DeviceConnectedAction: Action {
-    let device: Device
-}
-
-struct DeviceDisconnectedAction: Action {
-    let device: Device
-}
-
 struct DeviceFoundAction: Action {
     let device: Device
 }
@@ -30,3 +22,13 @@ struct MainFailureAction: Action {
 struct BLEStateAction: Action {
     let name: String
 }
+
+struct ScanStartAction: Action {}
+struct ScanStopAction: Action {}
+
+struct ServicesFoundAction: Action {
+    let services: [BTService]
+}
+
+struct ConnectionStartAction: Action {}
+struct ConnectionStopAcrtion: Action {}
