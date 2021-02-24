@@ -8,11 +8,15 @@
 import UIKit
 import CoreBluetooth
 
+extension DeviceInfoViewController.Props.State: Equatable {}
+
 final class DeviceInfoViewController: UIViewController {
     struct Props {
         let state: State; enum State {
             case initial
-            case loading
+            case connection
+            case loadingServices
+            case loaded
             case failure(String)
         }
         let bleManager: CBCentralManager
@@ -56,28 +60,53 @@ final class DeviceInfoViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
+        props.device?.discoverServices(nil)
+
     }
     
     func render(_ props: Props) {
         self.props = props
         bleManager = props.bleManager
         bleManager?.delegate = self
-
+        
         titleLabel.text = props.title
-        setConnectBtn()
-        switch self.props.device?.state {
-        case .connected:
-            activityIndicator.stopAnimating()
-            stateImageView.isHidden = false
-        case .disconnected:
-            activityIndicator.stopAnimating()
-            stateImageView.isHidden = true
-        default:
+        
+        stateImageView.isHidden = props.device?.state != .connected
+        
+        switch props.state {
+        case .initial:
+            break
+        case .connection:
             activityIndicator.startAnimating()
-            stateImageView.isHidden = true
+        case .loadingServices:
+            props.device?.discoverServices(nil)
+            print("Loading Services...")
+        case .loaded:
+            activityIndicator.stopAnimating()
+        case .failure(let error):
+            activityIndicator.stopAnimating()
+            showAlert(title: "Error!", message: error)
         }
+        
         servicesTableView.reloadData()
-        self.view.setNeedsLayout()
+
+        displayDeviceState(self.props.device?.state)
+
+    }
+    
+    private func displayDeviceState(_ state: DeviceState?) {
+        var title: String
+        var color: UIColor
+        switch state {
+        case .connected, .connecting:
+            title = "Disconnect"
+            color = UIColor.systemOrange
+        default:
+            title = "Connect"
+            color = UIColor.systemGreen
+        }
+        connectBtn.setTitle(title, for: .normal)
+        connectBtn.setTitleColor(color, for: .normal)
     }
     
     private func setupUI() {
@@ -85,33 +114,7 @@ final class DeviceInfoViewController: UIViewController {
         servicesTableView.register([ServiceTableViewCell.identifier])
         servicesTableView.tableFooterView = UIView(frame: .zero)
         activityIndicator.hidesWhenStopped = true
-        setConnectBtn()
-    }
-    
-    private func setConnectBtn() {
-        var title = "Connect"
-        var color = UIColor.systemGreen
-        if let state = props.device?.state {
-            switch state {
-            case .connected:
-                title = "Disconnect"
-                color = UIColor.systemGreen
-            case .disconnected:
-                title = "Connect"
-                color = UIColor.systemGreen
-            case .connecting:
-                title = "Connecting..."
-                color = UIColor.systemGray
-            case .disconnecting:
-                title = "Disconnecting..."
-                color = UIColor.systemGray
-            @unknown default:
-                break
-            }
-        }
-
-        connectBtn.setTitle(title, for: .normal)
-        connectBtn.setTitleColor(color, for: .normal)
+        displayDeviceState(props.device?.state)
     }
     
     private func changeDeviceConnection() {
@@ -146,7 +149,7 @@ final class DeviceInfoViewController: UIViewController {
 extension DeviceInfoViewController: CBCentralManagerDelegate {
     func centralManagerDidUpdateState(_ central: CBCentralManager) {
         if central.state != .poweredOn {
-            showAlert(title: "Error!", message: "Bluetooth is not powered on. State: \(central.state.name). Please turn on Bluetooth in settings of your device.")
+            showAlert(title: "Error!", message: "Bluetooth is \(central.state.name). Please turn on Bluetooth in settings of your device.")
         }
         
         connectBtn.isEnabled = central.state == .poweredOn
@@ -159,10 +162,9 @@ extension DeviceInfoViewController: CBCentralManagerDelegate {
     }
     
     func centralManager(_ central: CBCentralManager, didDisconnectPeripheral peripheral: CBPeripheral, error: Error?) {
-        handleError(source: "didFailToConnect", error: error) {
+        handleError(source: "didDisconnectPeripheral", error: error) {
             self.props.changeState.perform(with: peripheral)
         }
-        
     }
     
     func centralManager(_ central: CBCentralManager, connectionEventDidOccur event: CBConnectionEvent, for peripheral: CBPeripheral) {
@@ -170,7 +172,9 @@ extension DeviceInfoViewController: CBCentralManagerDelegate {
     }
     
     func centralManager(_ central: CBCentralManager, didFailToConnect peripheral: CBPeripheral, error: Error?) {
-        handleError(source: "didFailToConnect", error: error, completion: nil)
+        handleError(source: "didFailToConnect", error: error, completion: {
+            self.props.changeState.perform(with: peripheral)
+        })
     }
 }
 

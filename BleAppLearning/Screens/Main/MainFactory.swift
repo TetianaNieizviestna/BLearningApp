@@ -36,6 +36,7 @@ final class MainFactory {
                 render: render.dispatched(on: .main),
                 dispatch: dispatcher,
                 onDevice: CommandWith { device in
+                    dispatcher.perform(with: DeviceCurrentInitAction(device: device))
                     output.onDevice.perform(with: device)
                 },
                 endObserving: endObserving

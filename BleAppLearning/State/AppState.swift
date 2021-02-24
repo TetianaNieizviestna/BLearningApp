@@ -5,22 +5,22 @@
 //  Created by Tetiana Nieizviestna on 21.02.2021.
 //
 
-extension AppState: Equatable {}//, AutoLenses, AutoCodable {}
+extension AppState: Equatable {}
 
 struct AppState {
     static let initial = AppState()
 
     let main: MainState
-    let bleState: BLEState
+    let state: BLEState
     let deviceInfo: DeviceInfoState
     
     init(
         main: MainState = .initial,
-        bleState: BLEState = .initial,
+        state: BLEState = .initial,
         deviceInfo: DeviceInfoState = .initial
     ) {
         self.main = main
-        self.bleState = bleState
+        self.state = state
         self.deviceInfo = deviceInfo
     }
 }
@@ -32,7 +32,7 @@ func reduce(_ state: AppState, _ action: Action) -> AppState {
     default:
         return .init(
             main: reduce(state.main, action),
-            bleState: reduce(state.bleState, action),
+            state: reduce(state.state, action),
             deviceInfo: reduce(state.deviceInfo, action)
         )
     }

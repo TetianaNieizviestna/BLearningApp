@@ -18,7 +18,7 @@ struct MainPresenter {
         render.perform(
             with: .init(
                 state: getState(state),
-                bleManager: state.bleState.manager,
+                bleManager: state.state.manager,
                 status: getStatus(state),
                 items: getItems(state),
                 devices: state.main.devices,
@@ -55,7 +55,7 @@ struct MainPresenter {
     }
     
     private func getStatus(_ state: AppState) -> String {
-        return "Bluetooth: \(state.bleState.bleState)"
+        return "Bluetooth: \(state.state.bleState)"
     }
     
     private func getItems(_ state: AppState) -> [DeviceTableViewCell.Props] {

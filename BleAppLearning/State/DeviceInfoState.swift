@@ -17,7 +17,9 @@ struct DeviceInfoState {
     
     var state: State; enum State {
         case initial
-        case loading
+        case connection
+        case serviceLoading
+        case loaded
         case failure(String)
     }
     
@@ -38,15 +40,34 @@ struct DeviceInfoState {
 
 func reduce(_ state: DeviceInfoState, _ action: Action) -> DeviceInfoState {
     switch action {
-    case let action as DeviceChangeStateAction:
+    case let action as DeviceCurrentInitAction:
+        let services = state.currentDevice?.state == .connected ? state.services : []
         return .init(
-            state: state.state,
+            state: .initial,
+            services: services,
+            currentDevice: action.device
+        )
+    case let action as DeviceChangeStateAction:
+        var screenState: DeviceInfoState.State
+        
+        switch action.device.state{
+        case .connected:
+            screenState = .serviceLoading
+        case .connecting, .disconnecting:
+            screenState = .connection
+        case .disconnected:
+            screenState = .loaded
+        default:
+            screenState = state.state
+        }
+        return .init(
+            state: screenState,
             services: state.services,
             currentDevice: action.device
         )
     case let action as ServicesFoundAction:
         return .init(
-            state: state.state,
+            state: .loaded,
             services: action.services,
             currentDevice: state.currentDevice
         )

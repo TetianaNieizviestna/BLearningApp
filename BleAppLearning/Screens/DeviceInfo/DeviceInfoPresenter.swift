@@ -20,7 +20,7 @@ struct DeviceInfoPresenter {
         render.perform(
             with: .init(
                 state:  getState(state),
-                bleManager: state.bleState.manager,
+                bleManager: state.state.manager,
                 device: device,
                 title: device.name ?? "no name",
                 items: getItems(state),
@@ -45,7 +45,7 @@ struct DeviceInfoPresenter {
     }
     
     private func getItems(_ state: AppState) -> [ServiceTableViewCell.Props] {
-        let services = state.deviceInfo.services
+        let services = state.deviceInfo.services//.filter { $0.peripheral.identifier == state.deviceInfo.currentDevice?.identifier }
         return services.map { getItem($0) }
     }
     
@@ -65,8 +65,12 @@ struct DeviceInfoPresenter {
         switch state.deviceInfo.state {
         case .initial:
             return .initial
-        case .loading:
-            return .loading
+        case .connection:
+            return .connection
+        case .serviceLoading:
+            return .loadingServices
+        case .loaded:
+            return .loaded
         case .failure(let error):
             return .failure(error)
         }

@@ -56,7 +56,13 @@ final class MainViewController: UIViewController {
         setupUI()
         activityIndicator.hidesWhenStopped = true
     }
-
+    
+    override func viewDidLayoutSubviews() {
+        bleManager = props.bleManager
+        bleManager?.delegate = self
+        super.viewDidLayoutSubviews()
+    }
+    
     func render(_ props: Props) {
         self.props = props
         bleManager = props.bleManager
@@ -74,7 +80,6 @@ final class MainViewController: UIViewController {
         stateLabel.text = props.status
 
         devicesListTableView.reloadData()
-        self.view.setNeedsLayout()
     }
     
     private func setScanning(_ force: Bool) {
@@ -138,12 +143,28 @@ extension MainViewController: UITableViewDataSource {
 extension MainViewController: CBCentralManagerDelegate {
     func centralManagerDidUpdateState(_ central: CBCentralManager) {
         if central.state != .poweredOn {
-            showAlert(title: "Error!", message: "Bluetooth is not powered on. State: \(central.state.name). Please turn on Bluetooth in settings of your device.")
+            showAlert(title: "Error!", message: "Bluetooth is \(central.state.name). Please turn on Bluetooth in settings of your device.")
         }
         props.changeBleStatus.perform(with: central.state.name)
     }
 
     func centralManager(_ central: CBCentralManager, didDiscover peripheral: CBPeripheral, advertisementData: [String : Any], rssi RSSI: NSNumber) {
         props.foundDevice.perform(with: peripheral)
+    }
+    
+    func centralManager(_ central: CBCentralManager, didConnect peripheral: CBPeripheral) {
+        props.changeState.perform(with: peripheral)
+    }
+    
+    func centralManager(_ central: CBCentralManager, didDisconnectPeripheral peripheral: CBPeripheral, error: Error?) {
+        props.changeState.perform(with: peripheral)
+    }
+    
+    func centralManager(_ central: CBCentralManager, connectionEventDidOccur event: CBConnectionEvent, for peripheral: CBPeripheral) {
+        props.changeState.perform(with: peripheral)
+    }
+    
+    func centralManager(_ central: CBCentralManager, didFailToConnect peripheral: CBPeripheral, error: Error?) {
+        props.changeState.perform(with: peripheral)
     }
 }

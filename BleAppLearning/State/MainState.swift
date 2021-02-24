@@ -38,12 +38,10 @@ func reduce(_ state: MainState, _ action: Action) -> MainState {
     case let action as DeviceFoundAction:
         var newDevices = state.devices
 
-        if !newDevices.contains(where: { $0.identifier == action.device.identifier }) {
-            newDevices.append(action.device)
+        if let firstIndex = newDevices.firstIndex(where: { $0.identifier == action.device.identifier }) {
+            newDevices[firstIndex] = action.device
         } else {
-            if let firstIndex = newDevices.firstIndex(where: { $0.identifier == action.device.identifier }) {
-                newDevices[firstIndex] = action.device
-            }
+            newDevices.append(action.device)
         }
         return .init(
             state: state.state,

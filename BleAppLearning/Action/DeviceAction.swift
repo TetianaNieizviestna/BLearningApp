@@ -7,6 +7,10 @@
 
 import Foundation
 
+struct BLEStateAction: Action {
+    let name: String
+}
+
 struct DeviceFoundAction: Action {
     let device: Device
 }
@@ -19,8 +23,8 @@ struct MainFailureAction: Action {
     let error: String
 }
 
-struct BLEStateAction: Action {
-    let name: String
+struct DeviceCurrentInitAction: Action {
+    let device: Device
 }
 
 struct ScanStartAction: Action {}
