@@ -14,6 +14,12 @@
 		AB95702C25E502B100737F0A /* ServiceTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB95702A25E502B100737F0A /* ServiceTableViewCell.swift */; };
 		AB95702D25E502B100737F0A /* ServiceTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AB95702B25E502B100737F0A /* ServiceTableViewCell.xib */; };
 		AB95703025E54FE300737F0A /* BLEState.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB95702F25E54FE300737F0A /* BLEState.swift */; };
+		AB95703A25E7B8D700737F0A /* attribute_schema.json in Resources */ = {isa = PBXBuildFile; fileRef = AB95703425E7B8D700737F0A /* attribute_schema.json */; };
+		AB95703B25E7B8D700737F0A /* company_schema.json in Resources */ = {isa = PBXBuildFile; fileRef = AB95703525E7B8D700737F0A /* company_schema.json */; };
+		AB95703C25E7B8D700737F0A /* descriptor_uuids.json in Resources */ = {isa = PBXBuildFile; fileRef = AB95703625E7B8D700737F0A /* descriptor_uuids.json */; };
+		AB95703D25E7B8D700737F0A /* company_ids.json in Resources */ = {isa = PBXBuildFile; fileRef = AB95703725E7B8D700737F0A /* company_ids.json */; };
+		AB95703E25E7B8D700737F0A /* service_uuids.json in Resources */ = {isa = PBXBuildFile; fileRef = AB95703825E7B8D700737F0A /* service_uuids.json */; };
+		AB95703F25E7B8D700737F0A /* characteristic_uuids.json in Resources */ = {isa = PBXBuildFile; fileRef = AB95703925E7B8D700737F0A /* characteristic_uuids.json */; };
 		ABACDEAB25E14C77003F5B0B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABACDEAA25E14C77003F5B0B /* AppDelegate.swift */; };
 		ABACDEAF25E14C77003F5B0B /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABACDEAE25E14C77003F5B0B /* MainViewController.swift */; };
 		ABACDEB225E14C77003F5B0B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ABACDEB025E14C77003F5B0B /* Main.storyboard */; };
@@ -57,6 +63,12 @@
 		AB95702A25E502B100737F0A /* ServiceTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceTableViewCell.swift; sourceTree = "<group>"; };
 		AB95702B25E502B100737F0A /* ServiceTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ServiceTableViewCell.xib; sourceTree = "<group>"; };
 		AB95702F25E54FE300737F0A /* BLEState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BLEState.swift; sourceTree = "<group>"; };
+		AB95703425E7B8D700737F0A /* attribute_schema.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = attribute_schema.json; sourceTree = "<group>"; };
+		AB95703525E7B8D700737F0A /* company_schema.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = company_schema.json; sourceTree = "<group>"; };
+		AB95703625E7B8D700737F0A /* descriptor_uuids.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = descriptor_uuids.json; sourceTree = "<group>"; };
+		AB95703725E7B8D700737F0A /* company_ids.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = company_ids.json; sourceTree = "<group>"; };
+		AB95703825E7B8D700737F0A /* service_uuids.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = service_uuids.json; sourceTree = "<group>"; };
+		AB95703925E7B8D700737F0A /* characteristic_uuids.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = characteristic_uuids.json; sourceTree = "<group>"; };
 		ABACDEA725E14C77003F5B0B /* BleAppLearning.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BleAppLearning.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		ABACDEAA25E14C77003F5B0B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		ABACDEAE25E14C77003F5B0B /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
@@ -131,6 +143,27 @@
 			path = CutsomUI;
 			sourceTree = "<group>";
 		};
+		AB95703225E7B8BE00737F0A /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				AB95703325E7B8D700737F0A /* BTuuid */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		AB95703325E7B8D700737F0A /* BTuuid */ = {
+			isa = PBXGroup;
+			children = (
+				AB95703425E7B8D700737F0A /* attribute_schema.json */,
+				AB95703525E7B8D700737F0A /* company_schema.json */,
+				AB95703625E7B8D700737F0A /* descriptor_uuids.json */,
+				AB95703725E7B8D700737F0A /* company_ids.json */,
+				AB95703825E7B8D700737F0A /* service_uuids.json */,
+				AB95703925E7B8D700737F0A /* characteristic_uuids.json */,
+			);
+			path = BTuuid;
+			sourceTree = "<group>";
+		};
 		ABACDE9E25E14C77003F5B0B = {
 			isa = PBXGroup;
 			children = (
@@ -152,6 +185,7 @@
 		ABACDEA925E14C77003F5B0B /* BleAppLearning */ = {
 			isa = PBXGroup;
 			children = (
+				AB95703225E7B8BE00737F0A /* Resources */,
 				AB95702925E5028E00737F0A /* CutsomUI */,
 				AB95701725E4076A00737F0A /* Middlewares */,
 				ABACDF5025E28E61003F5B0B /* Action */,
@@ -350,9 +384,15 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AB95703D25E7B8D700737F0A /* company_ids.json in Resources */,
 				ABACDF2525E2702C003F5B0B /* DeviceInfo.storyboard in Resources */,
+				AB95703A25E7B8D700737F0A /* attribute_schema.json in Resources */,
 				ABACDEB725E14C78003F5B0B /* LaunchScreen.storyboard in Resources */,
+				AB95703F25E7B8D700737F0A /* characteristic_uuids.json in Resources */,
+				AB95703E25E7B8D700737F0A /* service_uuids.json in Resources */,
+				AB95703B25E7B8D700737F0A /* company_schema.json in Resources */,
 				ABACDEC025E15184003F5B0B /* AppIcon.png in Resources */,
+				AB95703C25E7B8D700737F0A /* descriptor_uuids.json in Resources */,
 				ABACDEB425E14C78003F5B0B /* Assets.xcassets in Resources */,
 				ABACDEB225E14C77003F5B0B /* Main.storyboard in Resources */,
 				ABACDECF25E16D1D003F5B0B /* DeviceTableViewCell.xib in Resources */,
